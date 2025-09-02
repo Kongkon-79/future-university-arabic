@@ -1,0 +1,2897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Sidebar Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#B11116",
+              sidebar: "#f8fafc",
+              content: "#2F2F2F",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Header -->
+
+       <div class="bg-white sticky top-0 z-50" dir="rtl">
+      <nav class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10">
+        <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="flex justify-between items-center h-16">
+            <!-- Logo and Language -->
+            <div class="flex items-center gap-10">
+              <a href="index.html">
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/2d316bb90db8bdfd99985c7d8b9a3db4557ec01d?width=310"
+                  alt="Future University in Egypt" class="h-12 w-auto" />
+              </a>
+
+              <!-- Language Selector -->
+              <div class="relative">
+                <button id="languageBtn"
+                  class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center bg-red-700 hover:bg-red-700 transition-colors">
+                  En
+                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div id="languageDropdown"
+                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Arabic</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+              <!-- Navigation Links -->
+              <div class="flex items-center space-x-6">
+                <a href="/" class="text-gray-700 hover:text-university-red font-medium transition-colors ml-8">الرئيسية</a>
+
+                <!-- Student Guide Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studentGuideBtn">
+    دليل الطالب
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studentGuideDropdown"
+    class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 hidden overflow-hidden">
+    <!-- سياسات وإجراءات القبول -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>سياسات وإجراءات القبول</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="font-medium">
+            سياسة القبول في الجامعة
+          </div>
+          <div>الإطار العام لسياسات القبول</div>
+          <div>إجراءات التقديم للجامعة</div>
+          <div>حجز اختبارات القبول</div>
+          <div>إجراءات القبول النهائية</div>
+          <div>المستندات المطلوبة العامة</div>
+          <div>القواعد العامة للقبول</div>
+          <div>معايير اختيار المتقدمين</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نظام الدراسة -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>نظام الدراسة</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>نظام الساعات المعتمدة</div>
+          <div>تعريف الساعة المعتمدة</div>
+          <div>الفصول الدراسية</div>
+          <div>سياسة تقييم الطلاب</div>
+          <div>امتحانات الطلاب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- حقوق ومسؤوليات الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>حقوق ومسؤوليات الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>سلوك الطالب</div>
+          <div>الشكاوى والمظالم</div>
+          <div>حقوق الطالب</div>
+          <div>مسؤوليات الطالب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- منصات التواصل عبر الإنترنت -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>المنصات الإلكترونية</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>منصة Moodle</div>
+          <div>البوابة الإلكترونية للطلاب</div>
+          <div>البريد الإلكتروني الجامعي</div>
+          <div>Zoom للمحاضرات الافتراضية</div>
+          <div>الدعم الفني</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- دعم الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>دعم الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>موارد الكمبيوتر وتكنولوجيا المعلومات</div>
+          <div>سياسات استخدام الإنترنت</div>
+          <div>خدمات الطلاب</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- Study Plans Dropdown -->
+               <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studyPlansBtn">
+    الخطط الدراسية
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studyPlansDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية طب الفم والأسنان</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الصيدلة</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الهندسة والتكنولوجيا</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الحاسبات وتكنولوجيا المعلومات</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الاقتصاد والعلوم السياسية</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية التجارة وإدارة الأعمال</a>
+  </div>
+</div>
+
+                <!-- Academic Calendar Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="academicCalendarBtn">
+    التقويم الأكاديمي
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="academicCalendarDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الصيف 2026</a>
+  </div>
+</div>
+              </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+              <button id="mobileMenuBtn"
+                class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+                  <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+          <div class="px-4 pt-2 pb-3 space-y-1">
+
+            <a href="#"
+              class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">Home</a>
+
+            <!-- Mobile Student Guide -->
+            <div>
+              <button id="mobileStudentGuideBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Student Guide
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileStudentGuideDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Admission
+                  Guide</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Course
+                  Registration</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Student
+                  Services</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Campus
+                  Life</a>
+              </div>
+            </div>
+
+            <!-- Mobile Study Plans -->
+            <div>
+              <button id="mobileStudyPlansBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Study Plans
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileStudyPlansDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Undergraduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Graduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Doctoral</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Certificate
+                  Programs</a>
+              </div>
+            </div>
+
+            <!-- Mobile Academic Calendar -->
+            <div>
+              <button id="mobileAcademicCalendarBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Academic Calendar
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileAcademicCalendarDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Fall
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Spring
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Summer
+                  Session</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Important
+                  Dates</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+  class="relative h-64 md:h-[500px] lg:h-[568px] bg-cover bg-center"
+  style="background-image: url('./images/h1.png')"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+  <div
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center"
+  >
+    <div class="text-center text-white">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        دليل <span class="text-[#FACC15]">الطلاب</span>
+      </h1>
+      <p class="text-lg md:text-xl">
+        كل ما تحتاج لمعرفته عن الحياة الطلابية في جامعة المستقبل
+      </p>
+    </div>
+  </div>
+</section>
+ 
+
+ 
+
+    <!-- Overlay for mobile -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"
+    ></div>
+
+    <!-- <h1 class="bg-red-200">neww</h1> -->
+
+    <!-- Main Content Wrapper -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar -->
+   <div class="flex flex-col gap-5">
+         <div
+          id="sidebar"
+          class="lg:sticky top-[100px] w-80 border-2 m-2 border-gray-200 transition-transform duration-300 ease-in-out z-40 overflow-y-auto"
+        >
+          <div class="p-6">
+            <!-- <h1 class="text-2xl font-bold text-gray-800 mb-8">
+              Navigation Menu
+            </h1> -->
+
+            <!-- Menu Items -->
+            <nav class="space-y-2">
+              <!-- Study System -->
+              <div class="menu-group border-l-4 border-none">
+               <button
+  class="menu-toggle w-full flex items-center justify-between p-3 text-right rounded-l-md transition-colors duration-200"
+  data-target="study-system"
+  data-main-content="study-system-section"
+  dir="rtl"
+>
+  <span class="font-semibold text-gray-800">نظام الدراسة</span>
+  <svg
+    class="w-5 h-5 transform transition-transform duration-200"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M19 9l-7 7-7-7"
+    ></path>
+  </svg>
+</button>
+
+                <div
+  class="submenu ml-4 mt-2 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+  dir="rtl"
+>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="credit-hour-system"
+  >
+    نظام الساعات المعتمدة
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="credit-definition"
+  >
+    تعريف الساعة المعتمدة
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="academic-semesters"
+  >
+    الفصول الدراسية
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="minium-and-maximum-credit-hours"
+  >
+    الحد الأدنى والأقصى للساعات المعتمدة
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="illustrative-example"
+  >
+    مثال توضيحي
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="cumulative-grade-point-average"
+  >
+    المعدل التراكمي
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="objectives-of-academic-advising"
+  >
+    أهداف الإرشاد الأكاديمي
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="attendance-policy"
+  >
+    سياسة الحضور
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+    data-content="student-assesment-policy"
+  >
+    سياسة تقييم الطلاب
+  </button>
+  <button
+    class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150 pb-10"
+    data-content="student_examination_regulations"
+  >
+    لوائح الامتحانات الطلابية
+  </button>
+</div>
+
+
+              </div>
+
+              <!-- General Policies -->
+              <div class="menu-group border-l-4 border-none" dir="rtl">
+  <button
+    class="menu-toggle w-full flex items-center justify-between p-3 text-right hover:bg-gray-100 rounded transition-colors duration-200"
+    data-target="general-policies"
+    data-main-content="general-policies-section"
+  >
+    <span class="font-semibold text-gray-800">
+      السياسات والإجراءات العامة
+    </span>
+    <svg
+      class="w-5 h-5 transform transition-transform duration-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </button>
+
+  <div
+    class="submenu ml-4 mt-2 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+  >
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="admission-policy-at-fue"
+    >
+      سياسة القبول بجامعة FUE
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="general-framework-of-admission-policies"
+    >
+      الإطار العام لسياسات القبول
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="fue-application-procedures"
+    >
+      إجراءات التقديم بجامعة FUE
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="booking-admission-tests-and-final"
+    >
+      حجز اختبارات القبول والإجراءات النهائية للقبول
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="general-documents-required-for-application"
+    >
+      المستندات العامة المطلوبة للتقديم
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="general-admission-rules"
+    >
+      القواعد العامة للقبول
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="application-selection-criteria"
+    >
+      معايير اختيار المتقدمين
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="student-support-and-services-policy"
+    >
+      سياسة دعم وخدمات الطلاب
+    </button>
+
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="computer-information-internet-policy"
+    >
+      سياسة استخدام الحاسوب وتكنولوجيا المعلومات والإنترنت
+    </button>
+  </div>
+</div>
+
+
+                <!-- Student Rights and Responsibilities -->
+                        <div class="menu-group border-r-4 border-none" dir="rtl">
+    <button
+        class="menu-toggle w-full flex items-center justify-between p-3 text-right hover:bg-gray-100 rounded transition-colors duration-200"
+        data-target="student-rights-and-responsibilities"
+        data-main-content="student-rights-and-responsibilities-section">
+        <span class="font-semibold text-gray-800">الحقوق والمسؤوليات الطلابية</span>
+        <svg class="w-5 h-5 transform transition-transform duration-200" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+
+    <div
+        class="submenu mr-4 mt-2 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+
+        <button
+            class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+            data-content="student-conduct">
+            السلوك الطلابي
+        </button>
+
+        <button
+            class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+            data-content="Complaints-and-Grievance-System">
+            نظام الشكاوى والتظلمات
+        </button>
+
+        <button
+            class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+            data-content="Student-Rights">
+            حقوق الطلاب
+        </button>
+
+        <button
+            class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+            data-content="Student-Responsibilities">
+            مسؤوليات الطلاب
+        </button>
+    </div>
+</div>
+
+
+                        <!-- Online Communication Platforms -->
+                        <div class="menu-group border-r-4 border-none" dir="rtl">
+  <button
+    class="menu-toggle w-full flex items-center justify-between p-3 text-right hover:bg-gray-100 rounded transition-colors duration-200"
+    data-target="online-communication-platforms"
+    data-main-content="online-communication-platforms-section"
+  >
+    <span class="font-semibold text-gray-800">منصات الاتصال عبر الإنترنت</span>
+    <svg
+      class="w-5 h-5 transform transition-transform duration-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </button>
+
+  <div
+    class="submenu mr-4 mt-2 space-y-1 max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+  >
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="modle-platform"
+    >
+      منصة مودل
+    </button>
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="Student-Portal"
+    >
+      بوابة الطلاب
+    </button>
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="University-Email"
+    >
+      البريد الجامعي
+    </button>
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="Zoom-Platform-for-Virtual-Lectures"
+    >
+      منصة زووم للمحاضرات الافتراضية
+    </button>
+    <button
+      class="submenu-item block w-full text-right p-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors duration-150"
+      data-content="Technical-Support"
+    >
+      الدعم الفني
+    </button>
+  </div>
+</div>
+
+            </nav>
+          </div>
+           <div class="max-w-80 mx-auto  " >
+        <!-- Image Container -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative">
+                <img 
+                    src="./images/jjj.jpg"
+                    alt="People working on a colorful workshop project" 
+                    class="w-full h-64 object-cover"
+                />
+            </div>
+            
+            <!-- Text Content -->
+            <div class="p-6 text-center">
+                <h3 class="text-lg font-medium text-gray-900 leading-relaxed">
+                    Lorem ipsum is a dummy or<br>
+                    placeholder
+                </h3>
+            </div>
+        </div>
+    </div>
+        </div>
+       
+       
+   </div>
+      
+
+        <main class="lg:w-3/4">
+          <div class="bg-white rounded-lg shadow-sm border p-6">
+            <!-- Main Content -->
+            <div class="min-h-screen">
+              <div class="">
+                <!-- Breadcrumb -->
+                <nav class="mb-6">
+                  <ol class="flex items-center space-x-2 text-sm text-gray-500">
+                    <li>
+                      <a href="#" class="hover:text-primary transition-colors"
+                        >Home</a
+                      >
+                    </li>
+                    <li><span class="mx-2">›</span></li>
+                    <li id="breadcrumb-current" class="text-gray-800">
+                      Student Guide
+                    </li>
+                  </ol>
+                </nav>
+
+                <!-- Content Area -->
+                <div id="content-area" class="bg-white">
+
+                  <!-- Study System Section (All Data) -->
+                  <section
+                    id="study-system-section"
+                    class="content-section opacity-100 transition-opacity duration-300 "
+                  >
+                    <!-- All subcontents as divs -->
+                    <div id="credit-hour-system" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">نظام الساعات المعتمدة</h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    تعتمد جامعة المستقبل نظام الساعات المعتمدة، وهو النظام الأكاديمي الأكثر
+    انتشارًا في الجامعات حول العالم. يقوم هذا النظام على المرونة في الدراسة،
+    حيث يسمح للطلاب بتنظيم خططهم الدراسية وفقًا لقدراتهم وظروفهم، وذلك تحت إشراف
+    أكاديمي مباشر.
+  </p>
+</div>
+
+<div id="credit-definition" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">تعريف الساعة المعتمدة</h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    الساعة المعتمدة هي وحدة قياس للدراسة الأكاديمية وتساوي:
+  </p>
+
+  <div class="space-y-4 mb-6">
+    <div class="flex items-start space-x-3">
+      <p class="text-gray-700">
+        • ساعة واحدة من المحاضرات النظرية أسبوعيًا طوال الفصل الدراسي، أو
+      </p>
+    </div>
+    <div class="flex items-start space-x-3">
+      <p class="text-gray-700">
+        • من ساعتين إلى ثلاث ساعات أسبوعيًا من الدروس العملية أو التمارين.
+      </p>
+    </div>
+  </div>
+
+  <div class="p-6">
+    <h3 class="font-semibold mb-3">مثال:</h3>
+    <p class="mb-3">
+      إذا كان المقرر الدراسي 3 ساعات معتمدة، فإن عدد الساعات الفعلية
+      للتدريس المقابلة لهذه الساعات يكون على الأقل كما يلي:
+    </p>
+    <ul class="space-y-1 mr-4 list-disc list-inside">
+      <li>• 3 ساعات محاضرات</li>
+      <li>
+        • ساعتان محاضرات + ساعتان دروس عملية أو تمارين أو معمل.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="academic-semesters" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">الفصول الدراسية</h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يتكون العام الأكاديمي من فصلين أساسيين (الخريف والربيع)، مع إمكانية
+    تقديم فصل صيفي اختياري لبعض المقررات.
+  </p>
+</div>
+
+<div id="minium-and-maximum-credit-hours" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    الحد الأدنى والأقصى للساعات المعتمدة
+  </h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • الحد الأدنى للساعات المعتمدة في الفصل الدراسي: 12 ساعة معتمدة
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • الحد الأقصى للساعات المعتمدة: يُحدد بناءً على المعدل التراكمي للطالب.
+    قد يصل إلى 18 أو 21 ساعة معتمدة للطلاب ذوي المعدل التراكمي المرتفع.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • في الفصل الصيفي: عادة لا يتجاوز التسجيل 6-9 ساعات معتمدة. ويمكن إضافة
+    3 ساعات معتمدة إضافية "زيادة" إذا كان الطالب متوقعًا تخرجه في العام
+    الأكاديمي القادم.
+  </p>
+
+  <!-- تعريف المعدل الفصلي -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      تعريف المعدل الفصلي (GPA):
+    </h2>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      • المعدل الفصلي هو متوسط النقاط التي يحصل عليها الطالب في جميع المقررات
+      المسجلة والمدروسة خلال فصل دراسي محدد (خريف، ربيع أو صيف). ويتم حسابه على
+      مقياس 4.0.
+    </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      • يمثل المعدل الفصلي مستوى الأداء الأكاديمي للطالب في ذلك الفصل فقط، دون
+      النظر إلى الفصول السابقة أو اللاحقة.
+    </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      • يُحسب باستخدام نظام النقاط استنادًا إلى الدرجات التي يحصل عليها الطالب
+      في كل مقرر.
+    </p>
+
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      خطوات حساب المعدل الفصلي:
+    </h2>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      1. ضرب عدد الساعات المعتمدة لكل مقرر في عدد النقاط التي حصل عليها الطالب
+      في ذلك المقرر.
+    </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      2. جمع النتائج لجميع المقررات التي درسها الطالب في نفس الفصل.
+    </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      3. قسمة مجموع النقاط على مجموع الساعات المعتمدة المسجلة في ذلك الفصل.
+    </p>
+  </div>
+</div>
+
+
+                   
+
+                    <!-- Illustrative Example: -->
+                    <div id="illustrative-example" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">مثال توضيحي:</h2>
+
+  <!-- Grading Scale -->
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">
+    1. مقياس الدرجات والنقاط المقابلة:
+  </h3>
+  <div class="overflow-x-auto mb-6">
+    <table class="w-full border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="bg-red-100">
+        <tr>
+          <th class="px-4 py-2 text-right text-gray-800">الدرجة</th>
+          <th class="px-4 py-2 text-right text-gray-800">النقاط (من 4.0)</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr>
+          <td class="px-4 py-2">A</td>
+          <td class="px-4 py-2">4.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">B+</td>
+          <td class="px-4 py-2">3.5</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">B</td>
+          <td class="px-4 py-2">3.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">C+</td>
+          <td class="px-4 py-2">2.5</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">C</td>
+          <td class="px-4 py-2">2.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">D</td>
+          <td class="px-4 py-2">1.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">F</td>
+          <td class="px-4 py-2">0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Student Result -->
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">
+    2. نتائج الطالب
+  </h3>
+  <div class="overflow-x-auto mb-6">
+    <table class="w-full border border-gray-300 rounded-lg overflow-hidden">
+      <thead class="bg-red-100">
+        <tr>
+          <th class="px-4 py-2 text-right text-gray-800">المقرر</th>
+          <th class="px-4 py-2 text-right text-gray-800">الساعات المعتمدة</th>
+          <th class="px-4 py-2 text-right text-gray-800">الدرجة</th>
+          <th class="px-4 py-2 text-right text-gray-800">حساب نقاط الدرجة</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <tr>
+          <td class="px-4 py-2">1</td>
+          <td class="px-4 py-2">3</td>
+          <td class="px-4 py-2">B (3.0)</td>
+          <td class="px-4 py-2">3 * 3.0 = 9.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">2</td>
+          <td class="px-4 py-2">2</td>
+          <td class="px-4 py-2">A (4.0)</td>
+          <td class="px-4 py-2">2 * 4.0 = 8.0</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">3</td>
+          <td class="px-4 py-2">3</td>
+          <td class="px-4 py-2">C+ (2.5)</td>
+          <td class="px-4 py-2">3 * 2.5 = 7.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Calculation -->
+  <div class="text-gray-700 space-y-2 mb-4">
+    <p>• مجموع نقاط الدرجات = 9.0 + 8.0 + 7.5 = 24.5</p>
+    <p>• مجموع الساعات المعتمدة = 3 + 2 + 3 = 8</p>
+    <p>
+      • المعدل الفصلي = 24.5 ÷ 8 =
+      <span class="font-bold">3.06 من 4</span>
+    </p>
+  </div>
+
+  <p class="text-red-600 font-semibold">
+    ** ملاحظة: جداول الدرجات لكل كلية موضحة في الجزء السادس من الدليل
+  </p>
+</div>
+
+
+                    <!-- Cumulative Grade Point Average (CGPA) -->
+                    <div id="cumulative-grade-point-average" class="mb-8" dir="rtl">
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    المعدل التراكمي لنقاط الدرجات (CGPA)
+  </h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • المعدل التراكمي (CGPA) هو متوسط أداء الطالب الأكاديمي عبر جميع المقررات التي درسها منذ التحاقه بالجامعة.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يتم حسابه باستخدام نظام نقاط الدرجات، استنادًا إلى الدرجات التي يحصل عليها الطالب في كل مقرر تم دراسته منذ التحاقه بالجامعة.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يتم حساب المعدل التراكمي بنفس طريقة حساب المعدل الفصلي، لكنه يشمل جميع المقررات التي درسها الطالب منذ التحاقه.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • الفرق بين المعدل الفصلي والمعدل التراكمي هو أن المعدل الفصلي يقيس أداء الطالب في فصل دراسي واحد فقط، بينما يقيس المعدل التراكمي أداء الطالب عبر جميع الفصول الدراسية منذ التحاقه بالجامعة. ويتم احتساب المعدل التراكمي بناءً على جميع المقررات التي تم دراستها في جميع الفصول السابقة.
+  </p>
+
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    أهمية المعدل التراكمي
+  </h2>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يحدد مستوى الأداء الأكاديمي للطالب.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يؤثر على قدرة الطالب على التسجيل لعدد أكبر من الساعات المعتمدة في الفصل الدراسي. فالطالب الذي يقل معدله التراكمي عن 2.0 سيسجل ساعات أقل حتى يتحسن معدله، مما قد يؤخر موعد تخرجه.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يُعد جزءًا من متطلبات التخرج، حيث لا يمكن للطالب التخرج إذا كان معدله التراكمي أقل من 2.0.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-6">
+    • يؤثر على فرصة الطالب في الالتحاق بالدراسات العليا بعد التخرج.
+  </p>
+
+  <!-- Academic Advising and Course Registration Policies -->
+  <div id="" class="mb-8">
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      سياسات الإرشاد الأكاديمي وتسجيل المقررات
+    </h2>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      تلتزم الجامعة بتوفير بيئة تعليمية شاملة تدعم الطلاب أكاديميًا وشخصيًا، لضمان حصولهم على التوجيه المناسب طوال رحلتهم الجامعية. ويُعتبر الإرشاد الأكاديمي أحد الركائز الأساسية لنظام التعليم الجامعي، ويهدف إلى مساعدة الطلاب في التخطيط الأكاديمي الصحيح وتوجيههم لاختيار المقررات المناسبة التي تتوافق مع قدراتهم واهتماماتهم، مع تلبية متطلبات التخرج لتخصصاتهم.
+    </p>
+    <p class="text-gray-600 leading-relaxed mb-6">
+      كما تلتزم الجامعة بوضع سياسات واضحة ومنظمة لعملية تسجيل المقررات. ويضمن ذلك تحقيق العدالة والشفافية، وتعزيز التزام الطلاب باللوائح الأكاديمية المعتمدة، ومنحهم المرونة اللازمة لإدارة خطط دراستهم تحت إشراف مباشر من أعضاء هيئة التدريس المتخصصين في الإرشاد الأكاديمي.
+    </p>
+  </div>
+</div>
+
+
+                 
+
+                    <!-- Objectives of Academic Advising -->
+                    <div id="objectives-of-academic-advising" class="mb-8" dir="rtl">
+  <!-- Objectives -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    أهداف الإرشاد الأكاديمي
+  </h2>
+  <p class="text-gray-700 mb-4">
+    يهدف نظام الإرشاد الأكاديمي في الجامعة إلى:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-8">
+    <li>مساعدة الطلاب في التخطيط لمسارهم الأكاديمي</li>
+    <li>دعم الطلاب في اختيار المقررات المناسبة وفق خطة دراستهم</li>
+    <li>مراقبة الأداء الأكاديمي للطلاب وتقديم الإرشاد المناسب</li>
+    <li>زيادة وعي الطلاب بحقوقهم الأكاديمية ومسؤولياتهم</li>
+    <li>تقديم الدعم النفسي والاجتماعي والأكاديمي للطلاب الجدد والطلاب المحولين من جامعات أخرى</li>
+  </ul>
+
+  <!-- Mechanisms -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    آليات الإرشاد الأكاديمي
+  </h2>
+  <ul class="list-disc pl-6 text-gray-600 space-y-3">
+    <li>
+      يُعيّن مستشار أكاديمي لكل طالب عند التحاقه بالجامعة.
+    </li>
+    <li>
+      يعقد المستشار الأكاديمي اجتماعات منتظمة مع الطالب لمناقشة:
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li>خطة الدراسة</li>
+        <li>الصعوبات الأكاديمية</li>
+        <li>اختيار المقررات</li>
+        <li>التطوير الشخصي والمهني</li>
+      </ul>
+    </li>
+    <li>
+      يعمل المستشار الأكاديمي كمرجع رئيسي للطالب فيما يخص:
+      <ul class="list-disc pl-6 mt-2 space-y-1">
+        <li>التسجيل</li>
+        <li>إضافة/سحب المقررات</li>
+        <li>التحويل بين التخصصات</li>
+        <li>الإرشاد لساعات التدريب العملي أو مشاريع التخرج</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- Course Registration -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      تسجيل المقررات
+    </h2>
+
+    <!-- Registration Procedures -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      إجراءات التسجيل:
+    </h3>
+    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+      <li>
+        يُفتح تسجيل المقررات إلكترونيًا عبر نظام الجامعة في بداية كل فصل دراسي أو من خلال المستشار الأكاديمي.
+      </li>
+      <li>
+        يجب على الطلاب الالتزام بخطة الدراسة المعتمدة ومراجعة المستشار الأكاديمي قبل التسجيل.
+      </li>
+      <li>
+        يجب الالتزام بالحد المسموح به من الساعات المعتمدة لكل فصل دراسي وفقًا للمعدل التراكمي:
+        <ul class="list-disc pl-6 mt-2 space-y-1">
+          <li>
+            <span class="font-semibold">معدل مرتفع:</span> يُسمح للطلاب بالتسجيل حتى الحد الأقصى من الساعات المعتمدة.
+          </li>
+          <li>
+            <span class="font-semibold">معدل منخفض:</span> قد يُطلب من الطلاب تقليل عدد الساعات المسجلة لمساعدتهم على رفع معدلهم التراكمي.
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Add/Drop -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      إضافة/سحب المقررات
+    </h3>
+    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+      <li>يُسمح للطلاب بتعديل جدول المقررات خلال فترة الإضافة/السحب.</li>
+      <li>بعد انتهاء فترة الإضافة/السحب، تخضع أي تعديلات لموافقة استثنائية من إدارة الكلية.</li>
+    </ul>
+
+    <!-- Course Withdrawal -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      سحب المقررات
+    </h3>
+    <p class="text-gray-600 mb-4">
+      يُسمح للطلاب بسحب مقرر خلال الفترة المخصصة لذلك، مع تسجيل درجة "W" (انسحاب) في السجل الأكاديمي، دون التأثير على المعدل التراكمي.
+    </p>
+
+    <!-- Retaking a Course -->
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      إعادة دراسة مقرر لتحسين المعدل التراكمي:
+    </h3>
+    <p class="text-gray-600">
+      تتطلب إعادة دراسة المقرر حضور جميع أنشطته بما في ذلك المحاضرات والتمارين والاختبارات. يحق للطلاب إعادة دراسة المقررات التي اجتازوها سابقًا لتحسين المعدل التراكمي، وفقًا للوائح كل كلية.
+    </p>
+  </div>
+
+  <!-- Student Responsibilities During Registration -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      مسؤوليات الطلاب أثناء التسجيل
+    </h2>
+    <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-8">
+      <li>الالتزام بالتقويم الأكاديمي المعلن من الجامعة</li>
+      <li>متابعة البريد الإلكتروني الجامعي والبوابة الإلكترونية بشكل مستمر</li>
+      <li>مراجعة المستشار الأكاديمي عند مواجهة أي تحديات أكاديمية</li>
+      <li>الالتزام بسياسات التسجيل وعدم تجاوز الحدود بدون موافقات رسمية</li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="attendance-policy" dir="rtl">
+  <!-- سياسة الحضور -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    سياسة الحضور
+  </h2>
+
+  <!-- متطلبات الأهلية للامتحان النهائي -->
+  <h3 class="text-lg font-semibold text-gray-800 mb-2">
+    متطلبات الأهلية للامتحان النهائي
+  </h3>
+  <h4 class="font-semibold text-gray-700 mb-1">
+    الحد الأدنى للحضور
+  </h4>
+  <p class="text-gray-600 mb-2">
+    يجب على الطلاب حضور ما لا يقل عن 75٪ من المحاضرات والجلسات العملية لكل مقرر مسجل. إذا تجاوز معدل غياب الطالب في أي مقرر 25٪:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-6">
+    <li>
+      سيتلقى الطالب تحذيرين، وبعد ذلك يحق لمجلس الكلية منع الطالب من دخول الامتحان النهائي.
+    </li>
+  </ul>
+
+  <!-- الغياب عن الامتحان النهائي -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    الغياب عن الامتحان النهائي
+  </h2>
+
+  <h4 class="font-semibold text-gray-700 mb-1">
+    الغياب غير المبرر
+  </h4>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+    <li>
+      سيحصل الطالب تلقائيًا على درجة رسوب (F) للمقرر.
+    </li>
+  </ul>
+
+  <h4 class="font-semibold text-gray-700 mb-1">
+    الغياب المبرر
+  </h4>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1">
+    <li>
+      سيحصل الطالب على درجة "ناقص" (I).
+    </li>
+  </ul>
+
+  <h4 class="font-semibold text-gray-700 mb-1 mt-2">
+    المتطلبات:
+  </h4>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+    <li>تقديم عذر مقبول خلال 48 ساعة من موعد الامتحان</li>
+    <li>الحصول على موافقة مجلس الكلية على العذر</li>
+    <li>تحقيق ما لا يقل عن 60٪ من علامة المقرر، و75٪ لطلاب كلية طب الفم والأسنان.</li>
+  </ul>
+
+  <!-- إجراءات الدرجة الناقصة -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-bold text-primary mb-4">
+      إجراءات الدرجة الناقصة
+    </h2>
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      الموعد النهائي للامتحان التعويضي
+    </h3>
+    <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+      <li>
+        يجب إتمام الامتحان التعويضي في موعد لا يتجاوز الأسبوع الأول من الفصل الدراسي التالي.
+      </li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      حساب الدرجة النهائية
+    </h3>
+    <p class="text-gray-600 mb-2">
+      يتم تحديد الدرجة النهائية بناءً على:
+    </p>
+    <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+      <li>درجة الامتحان التعويضي</li>
+      <li>بالإضافة إلى الدرجات المسجلة سابقًا لأعمال المقرر.</li>
+    </ul>
+
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">
+      ملاحظات هامة:
+    </h3>
+    <ol class="list-decimal pl-6 text-gray-600 space-y-2">
+      <li>الحضور الفعلي (وليس مجرد التسجيل) شرط أساسي للأهلية للامتحان.</li>
+      <li>يجب أن تكون الأعذار الطبية مدعومة بوثائق رسمية من السلطات المعتمدة وطبيب الجامعة.</li>
+      <li>يُسمح بتأجيل الامتحان فقط في حالات استثنائية وملحة وبموافقة مجلس الكلية.</li>
+      <li>
+        كلية طب الفم والأسنان: لا يُسمح للطالب بأكثر من مقرر ناقص واحد في السنة الأكاديمية، أو أكثر من خمسة خلال فترة الدراسة. يجب تقديم أي استثناءات لمجلس الكلية.
+      </li>
+    </ol>
+  </div>
+</div>
+
+                    
+
+                 
+
+                    <!-- Student Assessment Policy -->
+
+                    <div id="student-assesment-policy" class="mb-8" dir="rtl">
+  <!-- عنوان القسم -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    سياسة تقييم الطلاب
+  </h2>
+
+  <!-- الأهداف -->
+  <h3 class="text-lg font-semibold text-red-600 mb-2">
+    أهداف تقييم الطلاب
+  </h3>
+  <p class="text-gray-600 mb-2">
+    تهدف جامعة FUE، من خلال سياسة التقييم، إلى:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-6">
+    <li>قياس مدى تحقيق الطلاب للنتائج التعليمية المستهدفة.</li>
+    <li>تعزيز التعلم النشط والمستمر.</li>
+    <li>ضمان العدالة والشفافية في تقييم أداء الطلاب.</li>
+    <li>تحسين العملية التعليمية استنادًا إلى نتائج التقييم.</li>
+  </ul>
+
+  <!-- أنواع التقييم -->
+  <h3 class="text-lg font-semibold text-red-600 mb-2">
+    أنواع تقييم الطلاب
+  </h3>
+
+  <!-- التقييم التكويني (المستمر) -->
+  <h4 class="font-semibold text-gray-800 mb-1">
+    التقييم التكويني (المستمر):
+  </h4>
+  <p class="text-gray-600 mb-2">
+    يُجرى هذا النوع من التقييم خلال فترة الدراسة لتوجيه الطلاب وتحفيزهم على تحقيق أهداف التعلم. ويشمل:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1 mb-4">
+    <li>الامتحانات الفصلية</li>
+    <li>الاختبارات القصيرة (Quizzes)</li>
+    <li>الواجبات</li>
+    <li>العروض التقديمية</li>
+    <li>المشاريع والتقارير</li>
+  </ul>
+
+  <!-- التقييم الختامي (النهائي) -->
+  <h4 class="font-semibold text-gray-800 mb-1">
+    التقييم الختامي (النهائي):
+  </h4>
+  <p class="text-gray-600 mb-2">
+    يُجرى هذا التقييم في نهاية الفصل الدراسي لقياس التحصيل الأكاديمي النهائي للطالب، ويشمل:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-1">
+    <li>الامتحانات النهائية</li>
+    <li>التقييمات الشفوية أو العملية (إذا وجدت)</li>
+    <li>مشاريع التخرج (إذا وجدت)</li>
+  </ul>
+</div>
+
+
+                    <!-- Student Examination Regulations -->
+
+                   <div id="student_examination_regulations" class="mb-8" dir="rtl">
+  <!-- عنوان القسم -->
+  <h2 class="text-2xl font-bold text-primary mb-4">
+    لوائح امتحانات الطلاب
+  </h2>
+
+  <!-- قواعد دخول قاعة الامتحان -->
+  <h3 class="text-lg font-semibold text-red-600 mb-2">
+    قواعد دخول قاعة الامتحان
+  </h3>
+  <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-6">
+    <li>
+      لا يُسمح للطلاب بدخول قاعة الامتحان بدون بطاقة الجامعة الخاصة بهم. 
+      في حال عدم توفر البطاقة، يجب تقديم نسخة مطبوعة من النظام الإلكتروني تثبت تسجيل المقرر، 
+      مع صورة من ملف الطالب الشخصي من النظام الإلكتروني تحتوي على صورته الشخصية.
+    </li>
+    <li>
+      لا يُسمح بالدخول إلى قاعة الامتحان بعد مرور 30 دقيقة من بدء الامتحان، ولن يُمنح وقت بديل.
+    </li>
+    <li>
+      يجب على الطلاب الالتزام بالقاعة المحددة في الجدول الزمني، ولا يُسمح لهم بدخول قاعة أخرى.
+    </li>
+    <li>
+      يُمنع منعًا باتًا استخدام الهواتف المحمولة أو أي أجهزة تقنية أخرى (مثل الساعات الذكية، السماعات، إلخ) داخل القاعات. 
+      توفر الجامعة آلية لتخزين هذه الأجهزة حتى نهاية الامتحان.
+    </li>
+    <li>
+      يجب ترك جميع الأغراض الشخصية وأي أوراق خارج القاعة.
+    </li>
+    <li>
+      يكون المراقبون ورئيس قاعة الامتحان مسؤولين عن التحقق من هوية جميع الطلاب والتأكد من توقيعهم في قائمة الحضور.
+    </li>
+    <li>
+      لا يُسمح بتبادل الأدوات أو الآلات الحاسبة داخل قاعة الامتحان.
+    </li>
+    <li>
+      لا يُسمح بمغادرة قاعة الامتحان حتى مرور نصف مدة الامتحان.
+    </li>
+    <li>
+      للتحقق من هوية الطالبات المرتديات للنقاب، يقوم رئيس اللجنة (إن كانت أنثى) بالتحقق من هويتهن، أو يكلف رئيس اللجنة مراقبة أنثى للقيام بذلك.
+    </li>
+  </ul>
+
+  <!-- تقارير الغش أو سوء السلوك في الامتحان -->
+  <h3 class="text-lg font-semibold text-red-600 mb-2">
+    تقارير الغش أو سوء السلوك في الامتحان
+  </h3>
+  <p class="text-gray-600 mb-2">
+    يتم تقديم تقرير غش ضد الطالب في الحالات التالية:
+  </p>
+  <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+    <li>
+      ضبط الطالب بحيازة هاتف محمول أو أي جهاز تقني في قاعة الامتحان، حتى لو لم يتم استخدامه.
+    </li>
+    <li>
+      ضبط الطالب بحيازة أوراق تحتوي على مواد تتعلق بالمقرر.
+    </li>
+    <li>
+      الكتابة على اليد أو أي أغراض شخصية.
+    </li>
+    <li>
+      تحدث الطالب أو النظر إلى ورقة زميله.
+    </li>
+    <li>
+      أي مخالفة لقواعد الامتحان وتعليمات رئيس اللجنة والمراقبين.
+    </li>
+  </ul>
+
+  <!-- العقوبات -->
+  <h4 class="font-semibold text-red-600 mb-2">
+    في حال تقديم تقرير غش، يُعاقب الطالب كما يلي:
+  </h4>
+  <ul class="list-disc pl-6 text-gray-600 space-y-2">
+    <li>
+      إذا كان الامتحان نصف فصلي أو عملي، يحصل الطالب على صفر في ذلك الامتحان.
+    </li>
+    <li>
+      إذا كان الامتحان نهائي، يفشل الطالب في المقرر ويحصل على علامة F في هذا المقرر والمقرر التالي. 
+      إذا كان آخر امتحان، يُعتبر الطالب قد فشل في المقرر السابق له في الامتحانات.
+    </li>
+  </ul>
+</div>
+
+                  </section>
+
+                  <!-- General Policies Section (All Data) -->
+                  <section
+                    id="general-policies-section"
+                    class="content-section opacity-0 hidden transition-opacity duration-300"
+                  >
+
+                    <!-- All subcontents as divs -->
+                    <div id="admission-policy-at-fue" class="mb-8" dir="rtl">
+  <h1 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+    4. السياسات والإجراءات العامة في جامعة الفرات
+  </h1>
+  <div class="pl-6">
+    <p class="text-sm md:text-base text-content font-normal">
+      تلتزم الجامعة بتوفير بيئة تعليمية محفزة تعزز الإبداع والتفكير النقدي، وتعمل على تطوير القدرات الأكاديمية والمهنية للطلاب. لتحقيق ذلك، تعتمد الجامعة سياسات وإجراءات مدروسة تهدف إلى:
+    </p>
+
+    <ul class="list-disc pl-6 text-gray-600 space-y-2 pt-2 pb-6 ml-4">
+      <li class="text-sm md:text-base text-content font-normal">
+        ضمان العدالة والشفافية في تقييم أداء الطلاب.
+      </li>
+      <li class="text-sm md:text-base text-content font-normal">
+        تحقيق نتائج تعليمية واضحة ومحددة.
+      </li>
+      <li class="text-sm md:text-base text-content font-normal">
+        تشجيع التعلم النشط والمستمر.
+      </li>
+      <li class="text-sm md:text-base text-content font-normal">
+        تطوير العملية التعليمية بناءً على نتائج التقييم.
+      </li>
+    </ul>
+  </div>
+
+  <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+    4.1 سياسة القبول في جامعة الفرات
+  </h2>
+  <p class="text-sm md:text-base text-content font-normal pl-10">
+    انسجامًا مع رؤية ورسالة الجامعة التي تهدف إلى إعداد كوادر متميزة قادرة على المنافسة في الأسواق المحلية والإقليمية والدولية، قامت الجامعة بوضع مجموعة من السياسات واللوائح التي تنظم عملية القبول. تحافظ هذه السياسات على مبادئ الشفافية والعدالة وتكافؤ الفرص لجميع المتقدمين، وتهدف إلى جذب الطلاب المتميزين أكاديميًا وأخلاقيًا، والذين يمتلكون قدرات الإبداع والتميز، والقدرة على المساهمة الفعّالة في خدمة المجتمع والتنمية.
+  </p>
+  <p class="text-sm md:text-base text-content font-normal pl-10">
+    تضمن الجامعة أن تكون عملية القبول مبنية على أسس واضحة ومعايير دقيقة، مما يضمن الالتزام بالقوانين واللوائح المعتمدة من وزارة التعليم العالي والبحث العلمي، مع العمل على تطوير هذه السياسات باستمرار بما يتماشى مع التطورات التعليمية ومتطلبات الجودة الأكاديمية.
+  </p>
+</div>
+
+
+                    <div
+  id="general-framework-of-admission-policies"
+  class="mb-8"
+  dir="rtl"
+>
+  <h2
+    class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4"
+  >
+    4.1.1 الإطار العام لسياسات القبول
+  </h2>
+  <p
+    class="text-sm md:text-base text-content font-normal pl-10"
+  >
+    تلتزم جامعة الفرات بنظام قبول واضح وشفاف يضمن تكافؤ الفرص لجميع الطلاب الراغبين في الالتحاق. يتوافق هذا النظام مع المعايير الأكاديمية المعتمدة من وزارة التعليم العالي والبحث العلمي في مصر، وكذلك اللوائح المنظمة للقبول في الجامعات الخاصة. تسعى الجامعة إلى جذب الطلاب المتميزين أكاديميًا وأخلاقيًا، وتوفير بيئة تعليمية محفزة تدعم تنوع الطلاب وتلبي احتياجاتهم التعليمية والمهنية بما يتماشى مع متطلبات أسواق العمل المحلية والإقليمية والدولية.
+  </p>
+</div>
+
+
+                    <div
+  id="fue-application-procedures"
+  class="mb-8"
+  dir="rtl"
+>
+  <h2
+    class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4"
+  >
+    4.1.2 إجراءات التقديم في جامعة الفرات
+  </h2>
+
+  <div class="pl-10">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      1. تقديم الطلب
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> يجب على المتقدمين إنشاء ملف طلب عبر الموقع الرسمي للجامعة: www.fue.edu.eg.
+    </p>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      2. تفعيل الحساب
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> بعد التقديم، سيستلم المتقدم رسالة SMS وبريدًا إلكترونيًا يحتوي على اسم المستخدم وكلمة المرور لتسجيل الدخول إلى "بوابة التقديم الإلكتروني".
+    </p>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      3. دفع رسوم التقديم
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> يجب دفع رسوم التقديم غير القابلة للاسترداد خلال 48 ساعة عبر:
+    </p>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span>بطاقة الائتمان</p>
+      <p class="mt-3"><span class="ml-3">▪</span>بطاقة ميزة</p>
+      <p class="mt-3"><span class="ml-3">▪</span>خدمة فوري</p>
+      <p class="mt-3 mb-3"><span class="ml-3">▪</span>الدفع المباشر في حرم الجامعة</p>
+    </div>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-2">
+      <span class="ml-3">O</span> سيتم إرسال إيصال الدفع إلى البريد الإلكتروني المسجل.
+    </p>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      4. حجز اختبارات القبول
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> بعد الدفع، يجب على المتقدم تسجيل الدخول إلى "بوابة التقديم الإلكتروني" لحجز موعد اختبار القبول.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mt-3">
+      <span class="ml-3">O</span> سيتم إرسال نتائج الاختبارات عبر الرسائل القصيرة والبريد الإلكتروني.
+    </p>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      5. اختبارات تحديد المستوى والإعفاءات
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> يجب دفع رسوم اختبارات تحديد المستوى، وتشمل هذه الاختبارات:
+    </p>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span>اختبار اللغة الإنجليزية (5 مستويات)</p>
+      <p class="mt-3"><span class="ml-3">▪</span>اختبار مهارات الحاسوب (مستويين)</p>
+    </div>
+
+    <p class="text-sm md:text-base text-content font-normal pl-5 my-3">
+      <span class="ml-3">O</span> الإعفاء من اختبار اللغة الإنجليزية:
+    </p>
+    <div class="ml-14">
+      <p class="mt-3">
+        <span class="ml-3">▪</span> يُعفى المتقدمون الذين يحصلون على حد أدنى 6.5 في اختبار IELTS (مع الحصول على 6 على الأقل في كل قسم) من الاختبار.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+                    <div
+  id="booking-admission-tests-and-final"
+  class="mb-8"
+  dir="rtl"
+>
+  <h2
+    class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4"
+  >
+    4.1.3 حجز اختبارات القبول وإجراءات القبول النهائي
+  </h2>
+
+  <div>
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal py-4"
+    >
+      <span class="ml-3">•</span> حجز اختبارات القبول
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> يمكنكم حجز اختبارات القبول عن طريق تسجيل الدخول إلى "بوابة التقديم الإلكتروني".
+    </p>
+  </div>
+
+  <div class="mt-3">
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal pb-4"
+    >
+      <span class="ml-3">•</span> عند القبول النهائي
+    </h4>
+
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> تقديم المستندات:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> يجب تقديم جميع المستندات الأصلية والشهادات المطلوبة إلى إدارة شؤون الطلاب بالجامعة.
+    </p>
+
+    <p class="text-sm md:text-base text-content font-normal pl-5 mt-3">
+      <span class="ml-3">O</span> دفع الرسوم الدراسية:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> يجب دفع 50% من الرسوم الدراسية السنوية عند القبول.
+    </p>
+
+    <p class="text-sm md:text-base text-content font-normal pl-5 mt-3">
+      <span class="ml-3">O</span> الدورات الإضافية:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> يتم دفع رسوم الدورات الإضافية (إن وجدت) وفقًا للسياسات المالية للجامعة.
+    </p>
+
+    <h2
+      class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal py-4"
+    >
+      ملاحظات هامة:
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يجب تقديم جميع الشهادات الأكاديمية الأصلية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">•</span> يجب دفع الرسوم الدراسية ورسوم الدورات الإضافية وفقًا لسياسات الدفع بالجامعة.
+    </p>
+  </div>
+</div>
+
+
+                    <div
+  id="general-documents-required-for-application"
+  class="mb-8"
+  dir="rtl"
+>
+  <h2
+    class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4"
+  >
+    4.1.4 المستندات العامة المطلوبة للتقديم
+  </h2>
+
+  <div>
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal py-4"
+    >
+      <span class="ml-3">•</span> المستندات الشخصية:
+    </h4>
+    <p class="text-base md:text-base text-content font-normal pl-5 mb-3">
+      <span class="ml-3">1</span> شهادة ميلاد أصلية
+    </p>
+    <p class="text-base md:text-base text-content font-normal pl-5 mb-2">
+      <span class="ml-3">2</span> بطاقة الرقم القومي:
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12">
+      <span class="ml-3">O</span> نسخة واضحة من بطاقة الرقم القومي للطلاب المصريين فقط
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12 mt-4">
+      <span class="ml-3">O</span> نسخة من جواز السفر للطلاب الدوليين
+    </p>
+    <p class="text-base md:text-base text-content font-normal pl-5 mt-2">
+      <span class="ml-3">3</span> مستند الوصي:
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12">
+      <span class="ml-3">O</span> نسخة من بطاقة الرقم القومي أو جواز السفر للوصي
+    </p>
+  </div>
+
+  <div>
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal py-4"
+    >
+      <span class="ml-3">•</span> المستندات الأكاديمية:
+    </h4>
+    <p class="text-base md:text-base text-content font-normal pl-5 mb-3">
+      <span class="ml-3">4</span> إثبات إتمام 12 سنة دراسية:
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12">
+      <span class="ml-3">O</span> يجب تقديم مستندات تثبت إتمام 12 سنة دراسية
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12 mt-4">
+      <span class="ml-3">O</span> وتشمل:
+    </p>
+    <div class="ml-16">
+      <p class="mt-3">
+        <span class="ml-3">▪</span> شهادة إتمام المدرسة الإعدادية (الصف التاسع)
+      </p>
+      <p class="mt-3">
+        <span class="ml-3">▪</span> شهادة إتمام المدرسة الثانوية (3 سنوات)
+      </p>
+    </div>
+    <p class="text-sm md:text-base text-content font-normal pl-12 mt-4">
+      <span class="ml-3">O</span> يجب توثيق المستندات من السفارة المصرية في الدولة المعنية أو وزارة الخارجية المصرية بالقاهرة
+    </p>
+  </div>
+
+  <div>
+    <h4
+      class="text-base lg:text-lg text-primary font-bold leading-normal py-4"
+    >
+      <span class="ml-3">•</span> المستندات الإضافية:
+    </h4>
+    <p class="text-base md:text-base text-content font-normal pl-5 mb-3">
+      <span class="ml-3">5</span> 12 صورة شخصية:
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12">
+      <span class="ml-3">O</span> حديثة بحجم جواز السفر
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-12 mt-4">
+      <span class="ml-3">O</span> خلفية بيضاء، بدون إطار
+    </p>
+    <p class="text-base md:text-base text-content font-normal pl-5 my-3">
+      <span class="ml-3">6</span> بطاقة الخدمة العسكرية (نموذج رقم 2) للطلاب المصريين الذكور
+    </p>
+    <p class="text-base md:text-base text-content font-normal pl-5 mb-3">
+      <span class="ml-3">7</span> بطاقة الهوية العسكرية الأصلية للطلاب المصريين الذكور المولودين عام 2007 أو قبل ذلك
+    </p>
+    <p class="text-base md:text-base text-content font-normal pl-5 my-3">
+      <span class="ml-3">8</span> خطاب الانسحاب (للجامعات الخاصة) أو بيان الانسحاب شاملاً الحالة العسكرية للطلاب الملتحقين بالجامعات أو المعاهد الحكومية، أو خطاب من إدارة البعثات بإلغاء الإشراف الأكاديمي للطلاب المحولين من خارج مصر.
+    </p>
+
+    <h2
+      class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal py-4"
+    >
+      ملاحظات هامة:
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يجب أن تكون جميع المستندات حديثة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يجب ترجمة المستندات الأجنبية إلى اللغة العربية وتصديقها.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> عدم استكمال المستندات المطلوبة قد يؤدي إلى تأخير عملية القبول
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> لن تتحمل الجامعة أي مسؤولية عن تسجيل الطلاب الذين يفقدون النسخ الأصلية من المستندات المطلوبة بعد الموعد النهائي للإعلان عن التقديم.
+    </p>
+  </div>
+</div>
+
+
+                    <div id="general-admission-rules" class="mb-8" dir="rtl">
+  <h2
+    class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4"
+  >
+    4.1.5 القواعد العامة للقبول
+  </h2>
+  <div>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> الحصول على شهادة الثانوية العامة المصرية أو ما يعادلها من الشهادات العربية أو الأجنبية المعتمدة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> تحقيق الحد الأدنى للقبول الذي تحدده وزارة التعليم العالي سنويًا لكل كلية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> اجتياز اختبارات القبول والمقابلات الشخصية، إذا كانت مطلوبة، وفقًا لمتطلبات كل كلية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> تقديم جميع المستندات الرسمية المطلوبة خلال فترة التقديم.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> دفع الرسوم الدراسية المقررة وفقًا للسياسات المالية للجامعة.
+    </p>
+  </div>
+
+  <div class="mt-3">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      <span class="ml-3">•</span> عند القبول النهائي
+    </h4>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">O</span> تقديم المستندات:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> يجب تقديم جميع المستندات الأصلية والشهادات المطلوبة إلى إدارة شؤون الطلاب بالجامعة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mt-3">
+      <span class="ml-3">O</span> دفع الرسوم الدراسية:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> يجب دفع 50٪ من الرسوم الدراسية السنوية عند القبول.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mt-3">
+      <span class="ml-3">O</span> الدورات الإضافية:
+    </p>
+    <p class="mt-3 ml-14">
+      <span class="ml-3">▪</span> تُدفع رسوم الدورات الإضافية (إن وجدت) وفقًا للسياسات المعتمدة.
+    </p>
+
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal py-4">
+      ملاحظات هامة:
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يجب تقديم جميع الشهادات الأكاديمية الأصلية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      <span class="ml-3">•</span> يجب دفع الرسوم الدراسية ورسوم الدورات الإضافية وفقًا لسياسات الجامعة.
+    </p>
+  </div>
+</div>
+
+
+                    <div id="application-selection-criteria" class="mb-8" dir="rtl">
+  <div>
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.1.6 معايير اختيار المتقدمين
+    </h2>
+    <p class="text-lg md:text-base text-content font-bold pl-5 mb-4 ml-4">
+      في حالة تساوي مجموع درجات المتقدمين، يتم إعطاء الأفضلية وفقًا للمعايير التالية:
+    </p>
+    <div class="ml-10">
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> الدرجات الأعلى في المواد المؤهلة لكل كلية.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> التميز في اختبار اللغة الإنجليزية أو أي اختبارات قدرات خاصة.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> التميز في الأنشطة العلمية والمبتكرة أو الجوائز (إن وجدت).
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.1.7 التحويل من جامعات أخرى
+    </h2>
+    <p class="text-lg md:text-base text-content font-bold pl-5 mb-4 ml-4">
+      تسمح الجامعة بقبول الطلاب المحولين من جامعات معترف بها أخرى وفقًا للشروط التالية:
+    </p>
+    <div class="ml-10">
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> استيفاء متطلبات القبول للكلية التي يرغب الطالب في الانتقال إليها.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> تقديم السجل الأكاديمي الأصلي معتمد وموثق من السفارة المصرية (للكليات خارج مصر) أو في ظرف جامعي مختوم.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> تقديم وصف المقررات الأصلية مختوم بختم الجامعة الرسمي.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.1.8 التعليمات العامة للقبول
+    </h2>
+    <div class="ml-10">
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> الالتزام الكامل بالمواعيد النهائية المعلنة للتقديم.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> تحتفظ الجامعة بحق رفض أي طلب قبول لا يستوفي الشروط.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> جميع البيانات والمستندات المقدمة خاضعة للمساءلة القانونية إذا ثبت عدم صحتها.
+      </p>
+      <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> تحتفظ الجامعة بحق تعديل أو تحديث سياسات القبول سنويًا وفقًا للوائح والقوانين المعتمدة.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      تعليق القيد الأكاديمي
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-7 mb-4">
+      <span class="ml-3">O</span> يمكن تعليق قيد الطالب في الحالات التالية: عند بلوغ الطالب سن الحادية والعشرين، أو من قبل الوصي شخصيًا، أو بناءً على توكيل خاص لتعليق القيد من الأب أو الوصي في حالة وفاة الأب، أو في الحالات التي تراها الجامعة مناسبة.
+    </p>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr>
+            <th class="border-2 border-black bg-gray-200 p-4 text-left font-bold text-lg">
+              وقت تعليق القيد
+            </th>
+            <th class="border-2 border-black bg-gray-200 p-4 text-left font-bold text-lg">
+              رسوم التعليق
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border-2 border-black p-4 bg-white">تعليق لأول مرة</td>
+            <td class="border-2 border-black p-4 bg-white text-center">30%</td>
+          </tr>
+          <tr>
+            <td class="border-2 border-black p-4 bg-gray-100">تعليق للمرة الثانية</td>
+            <td class="border-2 border-black p-4 bg-gray-100 text-center">50%</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="border-2 border-black p-4 bg-white">
+              <strong>أكثر من ثلاث مرات:</strong> حسب طلب وموافقة مجلس الجامعة، مع تحديد النسبة (لا تقل عن 30%).<br />
+              <p class="mt-8">* قد يتم رفض طلب تعليق القيد.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-sm md:text-base text-content font-normal pl-7 mb-4">
+      <span class="ml-3">O</span> لا تُدفع أي رسوم لتعليق القيد المتعلقة بالخدمة العسكرية، لمدة أقصاها أربعة فصول دراسية فقط.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-7 mb-4">
+      <span class="ml-3">O</span> لا يمكن للطالب الانسحاب أثناء تعليق القيد إلا بعد دفع كامل الرسوم الدراسية للفصل المعلق والمنسحب منه.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-7 mb-4">
+      <span class="ml-3">O</span> إعادة التسجيل خلال الفصل الدراسي الذي تم تعليق القيد فيه تتطلب دفع كامل الرسوم الدراسية لذلك الفصل.
+    </p>
+  </div>
+</div>
+
+
+                    <div id="student-support-and-services-policy" class="mb-8" dir="rtl">
+  <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+    4.2 سياسة دعم وخدمات الطلاب
+  </h2>
+  <p class="text-lg md:text-base text-content font-medium pl-5 mb-4 ml-4">
+    تقدم الجامعة بيئة تعليمية شاملة تدعم الطلاب أكاديميًا ونفسيًا واجتماعيًا، لضمان نجاحهم وتميزهم طوال رحلتهم الجامعية. كما توفر الجامعة مجموعة متنوعة من خدمات الدعم الطلابي، بما في ذلك:
+  </p>
+
+  <div class="mt-3 ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.1 دعم الطلاب الدوليين
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يقدم مركز الدعم الدولي خدمات مخصصة للطلاب الدوليين، تشمل الإرشاد الأكاديمي، المساعدة في التسجيل، الدعم الاجتماعي، وبرامج التبادل الثقافي لتسهيل اندماجهم في الحياة الجامعية.
+    </p>
+  </div>
+
+  <div class="mt-3 ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.2 حياة الطلاب والأنشطة
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> يوفر قسم حياة الطلاب دعمًا شاملًا للأنشطة الاجتماعية والثقافية والفنية والرياضية، بالإضافة إلى تقديم المعلومات والإرشادات المتعلقة بالاتحاد الطلابي.
+    </p>
+  </div>
+
+  <div class="mt-3 ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.3 السكن الجامعي وخدمات المعيشة
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      <span class="ml-3">•</span> توفر الجامعة سكنًا آمنًا ومريحًا للطلاب مع خدمات متكاملة تشمل الأمن على مدار 24 ساعة، الرعاية الطبية، خدمات النظافة، والوصول إلى الإنترنت، لتوفير بيئة مثالية تدعم التحصيل الأكاديمي.
+    </p>
+  </div>
+
+  <div class="mt-3 ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.4 الدعم الطبي في الجامعة
+    </h2>
+    <h3 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4 ml-7">
+      العيادة الطبية الجامعية
+    </h3>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> تضم العيادة أطباء وممرضين مؤهلين يقدمون الرعاية الطبية العاجلة والاستشارات الصحية خلال ساعات العمل الجامعية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> تقدم خدمات مثل الفحوصات الطبية، وصف الأدوية، وإحالة الحالات المعقدة إلى المستشفيات أو الاستشاريين الطبيين داخل الحرم الجامعي أو عبر شركة التأمين الصحي.
+    </p>
+
+    <h3 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4 ml-7">
+      مركز الصحة النفسية
+    </h3>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      يقدم المركز الدعم النفسي للطلاب لضمان التكيف الأكاديمي والاجتماعي، من خلال جلسات استشارية وبرامج توعية.
+    </p>
+
+    <h3 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4 ml-7">
+      التأمين الصحي
+    </h3>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> توفر شركة التأمين خدمات طبية متنوعة، وتتم إحالات الحالات الطبية عبر العيادة الجامعية، باستثناء حالات الطوارئ خارج الحرم الجامعي، حيث يجب على الطلاب التوجه فورًا لأقرب مستشفى معتمد من شركة التأمين.
+    </p>
+
+    <h3 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4 ml-7">
+      خدمات الإسعاف
+    </h3>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> تتوفر خدمة إسعاف يوميًا لنقل الحالات الطارئة من الجامعة إلى الوجهة المطلوبة.
+    </p>
+  </div>
+
+  <div class="mt-3 lg:ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.5 المكتبة
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">التنوع :</span> توفر المكتبة مجموعات متنوعة لتلبية احتياجات البحث الأكاديمي والثقافي.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">سهولة الوصول إلى المعلومات :</span> توفر المكتبة فهرسًا سهل الاستخدام ونظام بحث متقدم للوصول إلى الموارد بكفاءة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">كفاءة العاملين :</span> يوفر الموظفون المدربون المساعدة للطلاب في البحث واستغلال خدمات المكتبة بفاعلية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">دفع رسوم الحافلة :</span> يجب دفع رسوم خدمة الحافلة بالكامل قبل بداية العام الدراسي.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">المسؤولية عن الأضرار :</span> يتحمل الطالب مسؤولية أي أضرار تلحق بالحافلة، وفقًا لما تحدده الجامعة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">الالتزام بالجداول والمسارات :</span> يجب على الطلاب الالتزام بالجداول والمسارات المعتمدة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">المجموعات الخاصة والمستودع الرقمي :</span> تحتفظ المكتبة بمجموعات خاصة داخل المستودع الرقمي للجامعة تشمل مواد فريدة تتعلق بتاريخ الجامعة أو اهتمامات بحثية محددة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">الموارد المحدثة والملائمة :</span> تقوم المكتبة بتحديث مجموعتها بانتظام لتشمل أحدث المنشورات والموارد المتوافقة مع المناهج الدراسية والاتجاهات البحثية الحديثة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">ورش العمل والتدريب :</span> تنظم المكتبة ورش عمل وجلسات تدريبية حول مهارات البحث والنزاهة الأكاديمية ومحو الأمية المعلوماتية لتعزيز قدرات الطلاب البحثية.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">بيئة هادئة ومريحة :</span> توفر المكتبة أجواءً هادئة ومريحة تسمح للطلاب بالتركيز والانخراط في دراستهم وأبحاثهم.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span>
+      <span class="font-bold text-lg mr-2">التحسين المستمر :</span> تسعى المكتبة دائمًا للحصول على ملاحظات الطلاب وتحديث خدماتها ومواردها لتلبية الاحتياجات المتطورة.
+    </p>
+  </div>
+
+  <div class="mt-3 lg:ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.2.6 خدمات النقل
+    </h2>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4">
+      توفر الجامعة خدمة حافلات مخصصة لنقل الطلاب من وإلى الحرم الجامعي، تغطي معظم مناطق القاهرة الكبرى وبعض المحافظات، مع أسطول حديث لضمان الراحة والسلامة.
+    </p>
+
+    <h3 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4 ml-7">
+      قواعد استخدام الحافلات الجامعية
+    </h3>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">إبراز بطاقة الجامعة :</span> يجب على جميع الطلاب إبراز بطاقة الجامعة عند استخدام الحافلة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">الصعود والنزول في المحطات المعتمدة :</span> يُسمح للطلاب بالصعود والنزول فقط في المحطات المعتمدة من الجامعة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">السلوكيات المحظورة داخل الحافلات :</span>
+      <p class="text-sm md:text-base text-content font-normal ml-[100px]">
+        <span class="ml-3">O</span> الأكل أو الشرب
+      </p>
+      <p class="text-sm md:text-base text-content font-normal ml-[100px]">
+        <span class="ml-3">O</span> التدخين
+      </p>
+      <p class="text-sm md:text-base text-content font-normal ml-[100px] mb-4">
+        <span class="ml-3">O</span> السلوك غير اللائق
+      </p>
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">دفع رسوم الحافلة :</span> يجب دفع رسوم خدمة الحافلة بالكامل قبل بداية العام الدراسي.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">المسؤولية عن الأضرار :</span> يتحمل الطالب مسؤولية أي أضرار تلحق بالحافلة وفقًا لما تحدده الجامعة.
+    </p>
+    <p class="text-sm md:text-base text-content font-normal pl-5 mb-4 ml-9">
+      <span class="ml-3">•</span> <span class="font-bold text-lg mr-2">الالتزام بالجداول والمسارات :</span> يجب على الطلاب الالتزام بالجداول والمسارات المعتمدة.
+    </p>
+  </div>
+</div>
+
+
+
+                    <div id="computer-information-internet-policy" class="mb-8" dir="rtl">
+  <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+    4.3 سياسة استخدام الكمبيوتر، تقنية المعلومات، والإنترنت
+  </h2>
+  <div class="pl-10">
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      تهدف هذه السياسة إلى تنظيم استخدام أجهزة الكمبيوتر وشبكات الجامعة وخدمات الإنترنت، بما يضمن الاستخدام الآمن والفعال لهذه الموارد لدعم الأغراض الأكاديمية والإدارية، مع الحفاظ على أمن المعلومات والالتزام بالقوانين واللوائح المحلية والدولية.
+    </p>
+  </div>
+
+  <div class="mt-3 ml-7">
+    <h2 class="text-lg md:text-xl lg:text-2xl text-primary font-bold leading-normal pb-4">
+      4.3.1 أهداف السياسة
+    </h2>
+    <div>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">1</span> <span class="font-bold text-base">تسهيل الوصول إلى الموارد التقنية</span> لدعم العمليات التعليمية والبحثية.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">2</span> <span class="font-bold text-base">ضمان الاستخدام المسؤول</span> لأجهزة الكمبيوتر وشبكة الجامعة والإنترنت.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">3</span> <span class="font-bold text-base">حماية البيانات والمعلومات</span> من الوصول أو الاستخدام غير المصرح به.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">4</span> <span class="font-bold text-base">الالتزام بالقوانين</span> المتعلقة بحماية الملكية الفكرية والخصوصية.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">5</span> <span class="font-bold text-base">منع الاستخدام غير الأخلاقي أو غير القانوني</span> للتقنية داخل الحرم الجامعي.
+      </p>
+    </div>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      4.3.2 نطاق السياسة
+    </h4>
+    <p class="text-xl md:text-base text-content font-bold pl-7">
+      تنطبق هذه السياسة على:
+    </p>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span> جميع الطلاب وأعضاء هيئة التدريس والموظفين.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> أي شخص مصرح له باستخدام الموارد التقنية للجامعة.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> جميع الأجهزة المتصلة بشبكة الجامعة (أجهزة الكمبيوتر، الأجهزة المحمولة، الطابعات، الخوادم).</p>
+    </div>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      4.3.3 إجراءات الاستخدام المقبول
+    </h4>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span> يُسمح باستخدام أجهزة الكمبيوتر والإنترنت للأغراض الأكاديمية والإدارية فقط.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يجب على المستخدمين تسجيل الدخول باستخدام بيانات اعتماد الجامعة (اسم المستخدم وكلمة المرور).</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر مشاركة الحسابات الشخصية مع الآخرين.</p>
+    </div>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      استخدام الإنترنت والبريد الإلكتروني
+    </h4>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر تصفح المواقع غير الأخلاقية أو غير القانونية.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر استخدام البريد الإلكتروني الجامعي لأغراض تجارية شخصية أو البريد المزعج.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يجب احترام قوانين الملكية الفكرية عند تحميل أو مشاركة الملفات.</p>
+    </div>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      الأمن والحماية
+    </h4>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر تثبيت البرامج غير المرخصة أو غير المصرح بها من قبل قسم تقنية المعلومات.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يجب تحديث أنظمة التشغيل وبرامج الحماية بانتظام.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر محاولة اختراق الشبكة أو الوصول غير المصرح به إلى أنظمة الجامعة.</p>
+    </div>
+  </div>
+
+  <div class="pl-10 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      الحفاظ على الأجهزة والبيانات
+    </h4>
+    <div class="ml-14">
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر تخزين بيانات شخصية غير متعلقة بالعمل الأكاديمي على أجهزة الجامعة.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يجب عمل نسخ احتياطية للبيانات المهمة بانتظام.</p>
+      <p class="mt-3"><span class="ml-3">▪</span> يُحظر العبث بأجهزة الجامعة أو إعدادات الشبكة بدون إذن.</p>
+    </div>
+  </div>
+
+  <div class="pl-8 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      4.3.4 الأفعال المحظورة والسلوكيات غير المقبولة
+    </h4>
+    <div class="ml-10">
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">أنشطة غير قانونية:</span> ممارسة أي نشاط غير قانوني باستخدام موارد الجامعة.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">سوء استخدام الموارد:</span> استخدام أجهزة الكمبيوتر أو الشبكة بطريقة مخالفة للسياسة.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">المحتوى المسيء:</span> نشر أو توزيع محتوى غير لائق أو مسيء.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">التجسس أو الاختراق:</span> محاولة اختراق الأنظمة أو التجسس على البيانات.
+      </p>
+    </div>
+  </div>
+
+  <div class="pl-8 mt-5">
+    <h4 class="text-base lg:text-lg text-primary font-bold leading-normal pb-4">
+      4.3.5 العقوبات على المخالفات
+    </h4>
+    <div class="ml-10">
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">مخالفة بسيطة:</span> (مثل استخدام الإنترنت لأغراض غير أكاديمية): تحذير رسمي أو تعليق مؤقت للوصول.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">مخالفة متوسطة:</span> (مثل تثبيت برامج غير مرخصة): حظر الوصول لفترة محددة، وإبلاغ الجهات المعنية.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">مخالفة جسيمة:</span> انتهاكات خطيرة لأمن البيانات أو السياسات الجامعية.
+      </p>
+      <p class="text-base md:text-base text-content font-normal pl-5 mb-4">
+        <span class="ml-3">•</span> <span class="font-bold text-base">التجسس أو الاختراق:</span> (مثل اختراق أو انتهاك الخصوصية): إجراءات تأديبية قد تصل للطرد أو الملاحقة القانونية.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+                  </section>
+
+                  <!-- Student Rights and Responsibilities (All Data) -->
+                                <section id="student-rights-and-responsibilities-section"
+                                    class="content-section opacity-0 hidden transition-opacity duration-300">
+                                  
+
+                                    <!-- All subcontents as divs -->
+                                    <div id="student-conduct" class="mb-8" dir="rtl">
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+    5. حقوق وواجبات الطالب
+  </h2>
+  <div class="pl-6">
+    <p class="text-sm md:text-base text-content font-normal">
+      تولي الجامعة أهمية كبيرة لتعزيز بيئة تعليمية عادلة ومحفزة من خلال تحديد حقوق وواجبات الطلاب بوضوح. وتشكل هذه الحقوق والواجبات جزءًا من لائحة شؤون الطلاب، التي تنظم العلاقة بين الطالب والجامعة.
+    </p>
+  </div>
+
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4 pt-6 pl-5">
+    5.1 سلوك الطالب
+  </h2>
+  <div class="pl-6">
+    <p class="text-sm md:text-base text-content font-normal pl-5">
+      يعد سلوك الطالب أساسياً لتعزيز بيئة تعليمية آمنة ومنتجة تحترم القيم الأخلاقية وحقوق الأفراد، مع ضمان الانضباط والمسؤولية بين جميع الطلاب. توفر هذه القواعد إطارًا شاملاً لتوجيه السلوك داخل الحرم الجامعي وخارجه أثناء الأنشطة المتعلقة بالجامعة.
+    </p>
+  </div>
+
+  <!-- Expected Student Behaviors -->
+  <div id="expected-student-behaviours" class="mb-8">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+      5.1.1 السلوكيات المتوقعة من الطلاب
+    </h2>
+
+    <div class="space-y-6 text-black ml-6 mt-4">
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• في المحاضرات والفصول الدراسية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الحضور في الوقت المحدد والمشاركة الفعالة.</li>
+          <li class="list-none">○ احترام آراء الآخرين وتجنب المقاطعة.</li>
+          <li class="list-none">○ الالتزام بالزي الجامعي المناسب.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• داخل الحرم الجامعي:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الحفاظ على النظافة العامة.</li>
+          <li class="list-none">○ الامتناع عن التدخين في الأماكن غير المخصصة.</li>
+          <li class="list-none">○ احترام خصوصية الآخرين وعدم التقاط الصور دون إذن.</li>
+          <li class="list-none">○ الالتزام بالزي المناسب داخل الحرم الجامعي.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• أثناء الأنشطة:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الالتزام بتعليمات مشرفي الفعاليات.</li>
+          <li class="list-none">○ تجنب السلوكيات التي قد تعرض السلامة للخطر.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• على المنصات الرقمية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ استخدام قنوات الاتصال الجامعية باحترام (البريد الإلكتروني، منصات التعلم).</li>
+          <li class="list-none">○ الامتناع عن نشر محتوى مسيء أو غير لائق.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Prohibited Behaviors -->
+  <div id="Prohibited-Behaviors" class="mb-8">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+      5.1.2 السلوكيات المحظورة
+    </h2>
+
+    <div class="space-y-6 text-black ml-6 mt-4">
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• الانتهاكات الأكاديمية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الغش في الامتحانات أو الانتحال الأدبي.</li>
+          <li class="list-none">○ تزوير المستندات أو التوقيعات.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• الانتهاكات السلوكية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ التحرش الجنسي أو اللفظي.</li>
+          <li class="list-none">○ التمييز أو العنصرية.</li>
+          <li class="list-none">○ العنف الجسدي أو التهديد.</li>
+          <li class="list-none">○ تعاطي المخدرات والكحول.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• الانتهاكات المادية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الإضرار بالممتلكات.</li>
+          <li class="list-none">○ السرقة أو الاستخدام غير المصرح به للموارد.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• الانتهاكات الأمنية:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ الدخول إلى مناطق مقيدة بدون إذن.</li>
+          <li class="list-none">○ حيازة مواد خطرة (مثل الأسلحة أو المخدرات).</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Procedures for Handling Violations -->
+  <div id="Procedures-for-Handling-Violations" class="mb-8">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+      5.1.3 إجراءات التعامل مع المخالفات
+    </h2>
+
+    <div class="space-y-6 text-black ml-6 mt-4">
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• التحقيق:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ تشكيل لجنة للتحقيق في الانتهاكات الجسيمة.</li>
+          <li class="list-none">○ السماح للطالب بعرض دفاعه كتابةً أو شفهيًا.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• العقوبات:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ التحذير المكتوب: للمخالفات البسيطة.</li>
+          <li class="list-none">○ الإيقاف المؤقت: لفترات محددة حسب خطورة المخالفة.</li>
+          <li class="list-none">○ الطرد النهائي: في الحالات المتكررة أو الجسيمة (مثل العنف أو التهديدات).</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• الاستئناف:</p>
+        <ul class="list-disc list-inside ml-6 space-y-2">
+          <li class="list-none">○ يحق للطالب الاستئناف على القرار خلال أسبوع من صدوره.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+                                    <!-- Complaints-and-Grievance-System as divs -->
+                                    <div id="Complaints-and-Grievance-System" class="mb-8" dir="rtl">
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+    5.2 نظام الشكاوى والتظلمات
+  </h2>
+
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4 pt-6 pl-5">
+    5.2.1 قنوات تقديم الشكاوى
+  </h2>
+  <div class="pl-6 mt-3 mb-4">
+    <ul class="list-disc list-outside space-y-2 ml-6">
+      <li>من خلال صندوق الشكاوى أو إلكترونيًا.</li>
+      <li>مباشرة عبر رؤساء الأقسام الأكاديمية، كتابة أو شفويًا.</li>
+      <li>نائب عميد الكلية للشؤون التعليمية والطلابية للشكاوى المتعلقة بالامتحانات والمسائل الأكاديمية.</li>
+      <li>عميد الكلية.</li>
+      <li>نائب الرئيس للشؤون التعليمية والطلابية إذا لزم الأمر، بحضور عميد الكلية.</li>
+    </ul>
+  </div>
+
+  <div class="mb-8">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+      5.2.2 إجراءات التعامل مع الشكاوى والتظلمات
+    </h2>
+
+    <div class="space-y-6 text-black ml-6 mt-4">
+      <div>
+        <p class="font-semibold mb-3 text-xl">• بالنسبة لصندوق الشكاوى:</p>
+        <p>
+          يتم فتح صندوق الشكاوى والمقترحات بشكل دوري. يتم مراجعة الشكاوى والمقترحات وتحويلها إلى الجهة المختصة، مع متابعة العميد للموضوع.
+        </p>
+      </div>
+
+      <div>
+        <p class="font-semibold mb-3 text-xl">• بالنسبة للشكاوى المقدمة إلى رؤساء الأقسام ونائب العميد:</p>
+        <ul class="list-[circle] list-outside ml-6 space-y-2">
+          <li>يتم استقبال الشكاوى الطلابية وتسجيلها وتحويلها للجهة المختصة لحلها، مع متابعة إجراءات الحل.</li>
+          <li>
+            يُخول لرئيس القسم أو نائب العميد التعامل مع الشكاوى ضمن نطاق اختصاصهم واتخاذ الإجراءات اللازمة لحلها. في الحالات التي تتطلب موافقة مجلس القسم، يمكن للمجلس تفويض رئيس القسم بالمضي في حل المشكلة دون انتظار اجتماع المجلس لتسريع عملية حل الشكاوى.
+          </li>
+          <li>
+            بالنسبة للشكاوى الأخرى، يقوم رئيس القسم برفع الموضوع إلى نائب العميد للشؤون التعليمية والطلابية أو العميد حسب طبيعة كل شكوى، ثم إلى نائب الرئيس للشؤون التعليمية والطلابية، بمرافقة عميد الكلية إذا لزم الأمر.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-8">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+      5.2.3 استئناف الطلاب بخصوص نتائج الامتحانات
+    </h2>
+    <p>
+      توجد قواعد محددة للتعامل مع استئناف الطلاب، ومتابعة تنفيذها، وإعلان نتائجها، كما يلي:
+    </p>
+
+    <div class="space-y-6 text-black ml-6 mt-4">
+      <ol class="list-decimal list-outside ml-6 space-y-2">
+        <li>
+          يجب تقديم استئنافات امتحانات منتصف الفصل مباشرة إلى المدرسين خلال أسبوع واحد من إعلان النتائج للطلاب.
+        </li>
+        <li>
+          تنظيم استئناف امتحانات نهاية الفصل:
+          <ul class="list-disc list-outside ml-6 space-y-2 mt-2">
+            <li>
+              تبدأ فترة الاستئناف بعد إعلان النتيجة النهائية على النظام الإلكتروني وتستمر لمدة أسبوعين (أسبوع واحد لكلية التجارة).
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <ul class="list-disc list-outside ml-6 space-y-2">
+        <li>
+          يجب على الطالب تقديم استئنافه باستخدام النموذج المخصص إلى نائب عميد الكلية للشؤون التعليمية والطلابية، موضحًا الاستئناف المتعلق بالمقرر/المقررات التي يطلب مراجعة الدرجة فيها، ثم يتم تسجيله في سجل خاص.
+        </li>
+        <li>
+          يقوم مكتب نائب عميد الكلية للشؤون التعليمية والطلابية بتحويل الاستئنافات إلى رئيس قسم الرقابة على الامتحانات المختص أو أحد مساعديه.
+        </li>
+        <li>
+          يشكل قسم الرقابة على الامتحانات لجنة لمراجعة كراسة إجابة الطالب، وتتم المراجعة كما يلي:
+          <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+            <li>التأكد من تصحيح جميع أجزاء كراسة الإجابة وتسجيل الدرجات.</li>
+            <li>التأكد من تسجيل جميع العلامات الموجودة داخل الكراسة على الغلاف.</li>
+            <li>إعادة حساب المجموع الكلي بجمع علامات جميع الأسئلة.</li>
+            <li>التأكد من تسجيل الدرجة الصحيحة على النظام الإلكتروني.</li>
+            <li>تسجيل علامات التقييم التكويني (العملي، النظري، والعمل المقرر إن وجد) والمجموع الكلي.</li>
+            <li>عرض نتائج مراجعة الاستئناف على نائب عميد الكلية للشؤون الطلابية لاعتمادها، مع اتخاذ الإجراءات القانونية اللازمة إذا ثبت صحة شكوى الطالب.</li>
+            <li>إذا حدث تغيير في درجات الطالب، يتم إعداد مذكرة تعديل الدرجة يوقعها مدرس المقرر وتُرفع إلى مكتب نائب العميد لتحديث الدرجات على النظام الإلكتروني.</li>
+            <li>يتم إعلام الطالب بنتيجة الاستئناف خلال فترة لا تتجاوز أسبوعين من تاريخ تقديم الاستئناف.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+                                     <!-- 5.3.Student-Rights as divs -->
+                                        <div id="Student-Rights" class="mb-8" dir="rtl">
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+    5.3 حقوق الطلاب
+  </h2>
+
+  <div class="space-y-6 text-black ml-6 mt-4">
+    <ul class="list-disc list-outside ml-6 space-y-4">
+      <li>
+        <span class="font-semibold">التحصيل الأكاديمي العادل:</span>
+        <p class="ml-2">
+          للطلاب الحق في تلقي تعليم عالي الجودة وتقييم موضوعي وعادل لأدائهم الأكاديمي.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الوصول إلى المعلومات:</span>
+        <p class="ml-2">
+          للطلاب الحق في الوصول إلى سياسات الجامعة، ومواد المقررات، والفرص المتاحة، بما في ذلك تفاصيل البرامج الأكاديمية وخدمات الطلاب.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">التواصل مع أعضاء هيئة التدريس:</span>
+        <p class="ml-2">
+          للطلاب الحق في الاستفادة من ساعات مكتب أعضاء هيئة التدريس للحصول على الاستشارات الأكاديمية والدعم اللازم.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">المشاركة في الأنشطة الطلابية:</span>
+        <p class="ml-2">
+          للطلاب الحق في الانخراط في الأنشطة الثقافية والرياضية والاجتماعية، وكذلك الانتخابات الطلابية، مما يساهم في تطوير مهاراتهم الشخصية والقيادية.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الرعاية الصحية والاجتماعية:</span>
+        <p class="ml-2">
+          للطلاب الحق في الاستفادة من الخدمات الطبية المتاحة في الحرم الجامعي، بما في ذلك العيادات الطبية والتأمين الصحي.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الحق في تقديم التظلمات:</span>
+        <p class="ml-2">
+          للطلاب الحق في تقديم الشكاوى أو التظلمات إذا لم يتمكنوا من الحصول على حقوقهم المقررة، وأن تتم مراجعتها من قبل الجهات المختصة.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+                                        <!-- 5.4.Student-Responsibilities as divs -->
+                                        <div id="Student-Responsibilities" class="mb-8" dir="rtl">
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+    5.4 مسؤوليات الطلاب
+  </h2>
+
+  <div class="space-y-6 text-black ml-6 mt-4">
+    <ul class="list-disc list-outside ml-6 space-y-4">
+      <li>
+        <span class="font-semibold">الالتزام بأنظمة الجامعة:</span>
+        <p class="ml-2">
+          الالتزام بالأنظمة والسياسات المعمول بها داخل الجامعة، بما في ذلك قواعد السلوك والانضباط.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الحفاظ على ممتلكات الجامعة:</span>
+        <p class="ml-2">
+          حماية مرافق ومعدات الحرم الجامعي، وتجنب أي أفعال قد تتسبب في تلفها.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الاحترام المتبادل:</span>
+        <p class="ml-2">
+          التعامل مع أعضاء هيئة التدريس، والمساعدين الأكاديميين، والموظفين، والزملاء باحترام، وتعزيز بيئة تعليمية إيجابية.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الجدية في التحصيل الأكاديمي:</span>
+        <p class="ml-2">
+          الالتزام بحضور المحاضرات والمشاركة الفعّالة في الأنشطة الأكاديمية والاجتهاد في الدراسة.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الالتزام بسياسات الجامعة:</span>
+        <p class="ml-2">
+          اتباع السياسات العامة المعتمدة من قبل الجامعة.
+        </p>
+      </li>
+
+      <li>
+        <span class="font-semibold">الالتزام المالي:</span>
+        <p class="ml-2">
+          دفع الرسوم الدراسية ضمن المواعيد المحددة.
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+                                </section>
+
+
+                                <!-- Online Communication Platforms 7. (All Data) -->
+                                <section id="online-communication-platforms-section"
+                                    class="content-section opacity-0 hidden transition-opacity duration-300">
+
+                                    <!-- All subcontents as divs -->
+                                    <div id="modle-platform" class="mb-8" dir="rtl">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+        7. منصات التواصل الإلكترونية
+    </h2>
+
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4 pt-6 pl-5">
+        7.1 منصة Moodle
+    </h2>
+    <div class="pl-6">
+        <p class="text-sm md:text-base text-content font-normal pl-5">
+            <strong>Moodle</strong> هو نظام إدارة التعلم الإلكتروني (LMS) الذي اعتمدته الجامعة. يُستخدم لتقديم محتوى الدورات، إدارة المحاضرات، تسليم الواجبات، إجراء الاختبارات، وتسهيل التفاعل بين الطلاب وأعضاء هيئة التدريس.
+        </p>
+    </div>
+
+    <div>
+        <ul class="list-disc list-outside ml-6 space-y-4">
+            <!-- Importance of Moodle -->
+            <li>
+                <span class="font-semibold my-2">أهمية منصة Moodle للطلاب:</span>
+                <p class="ml-2 my-2 text-xl font-bold">توفر المنصة بيئة تعلم شاملة، تمكن الطلاب من:</p>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>الوصول إلى المواد التعليمية مثل الدورات، العروض التقديمية، ومقاطع الفيديو.</li>
+                    <li>تسليم الواجبات والحصول على ملاحظات من أعضاء هيئة التدريس.</li>
+                    <li>أداء الاختبارات الإلكترونية.</li>
+                    <li>الوصول إلى الجدول الأكاديمي والإعلانات المهمة.</li>
+                    <li>التواصل مع الأساتذة والزملاء من خلال المنتديات أو الرسائل التعليمية.</li>
+                </ul>
+            </li>
+
+            <!-- How to Access Moodle -->
+            <li>
+                <span class="font-semibold">كيفية الوصول إلى Moodle:</span>
+                <ol class="list-decimal list-outside ml-6 space-y-2 mt-2">
+                    <li>
+                        <p>
+                            <a href="https://moodle.fue.edu.eg" target="_blank" class="text-blue-600 underline">
+                                https://moodle.fue.edu.eg
+                            </a>
+                            &nbsp;قم بزيارة الموقع الرسمي للمنصة عبر الرابط أعلاه.
+                        </p>
+                    </li>
+                    <li>
+                        إدخال بيانات تسجيل الدخول الخاصة بك:
+                        <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                            <li><span class="font-semibold">اسم المستخدم:</span> [الرقم الجامعي]</li>
+                            <li><span class="font-semibold">كلمة المرور:</span> [مرسلة من قسم نظم المعلومات أو تم تعيينها أثناء التسجيل]</li>
+                        </ul>
+                        <p class="ml-2 mt-2 font-semibold text-red-600">
+                            يُوصى بتغيير كلمة المرور بعد تسجيل الدخول الأول للحفاظ على الخصوصية. كلمة المرور موحدة عبر جميع منصات الجامعة.
+                        </p>
+                    </li>
+                </ol>
+            </li>
+
+            <!-- General Instructions -->
+            <li>
+                <span class="font-semibold">تعليمات عامة لاستخدام المنصة:</span>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>متابعة الدورات المسجلة بشكل منتظم.</li>
+                    <li>تسليم الواجبات في الوقت المحدد.</li>
+                    <li>التأكد من وجود اتصال إنترنت مستقر قبل بدء الاختبارات الإلكترونية.</li>
+                    <li>مراقبة التنبيهات والإعلانات الخاصة بكل دورة.</li>
+                    <li>عدم مشاركة بيانات تسجيل الدخول مع أي شخص.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+                                    <!-- Student Portal as divs -->
+                                    <div id="Student-Portal" class="mb-8" dir="rtl">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+        7.2 بوابة الطالب
+    </h2>
+    <div class="pl-6 mt-3 mb-4">
+        <div>
+            <p class="mb-4">
+                بوابة الطالب هي منصة رقمية شاملة طورتها الجامعة لتمكين الطلاب من الوصول بسهولة وأمان إلى العديد من الخدمات الأكاديمية والإدارية، دون الحاجة لزيارة مكاتب الجامعة شخصيًا.
+            </p>
+
+            <ul class="list-disc list-outside ml-6 space-y-4">
+                <!-- Importance of the Student Portal -->
+                <li>
+                    <span class="font-semibold">أهمية بوابة الطالب:</span>
+                    <p class="ml-2 mt-1 text-lg font-semibold">تمكن البوابة الطلاب من إدارة شؤونهم الأكاديمية والإدارية بسهولة. وتشمل خدماتها الرئيسية:</p>
+
+                    <ul class="list-disc list-outside ml-6 space-y-1 mt-2">
+                        <li>تسجيل المواد الدراسية خلال فترات التسجيل.</li>
+                        <li>مراجعة الجداول الأكاديمية وجداول الامتحانات.</li>
+                        <li>متابعة الحالة الأكاديمية (المعدل التراكمي، الساعات المعتمدة، التحذيرات الأكاديمية إن وجدت).</li>
+                        <li>عرض الدرجات وتقارير الفصل الدراسي.</li>
+                        <li>تقديم الطلبات الإلكترونية (الانسحاب، التأجيل، مراجعة الدرجات، إلخ).</li>
+                        <li>عرض الرسوم الدراسية والفواتير ودفع الرسوم إلكترونيًا.</li>
+                        <li>وغيرها من الخدمات.</li>
+                    </ul>
+                </li>
+
+                <!-- How to Access the Portal -->
+                <li>
+                    <span class="font-semibold">كيفية الوصول إلى البوابة:</span>
+                    <ol class="list-decimal list-outside ml-6 space-y-2 mt-2">
+                        <li>
+                            زيارة الموقع الرسمي للجامعة والوصول مباشرة إلى البوابة عبر الرابط:
+                            <a href="https://services.fue.edu.eg/LogIn.aspx?Type=1" target="_blank" class="text-blue-600 underline">
+                                https://services.fue.edu.eg/LogIn.aspx?Type=1
+                            </a>
+                        </li>
+                        <li>
+                            إدخال بيانات تسجيل الدخول الخاصة بك:
+                            <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                                <li><span class="font-semibold">اسم المستخدم:</span> [الرقم الجامعي]</li>
+                                <li><span class="font-semibold">كلمة المرور:</span> [مرسلة من قسم نظم المعلومات أو تم تعيينها أثناء التسجيل]</li>
+                            </ul>
+                            <p class="ml-2 mt-2 text-red-600 font-bold">
+                                يُوصى بتحديث كلمة المرور بشكل دوري للحفاظ على أمان المعلومات. كلمة المرور موحدة عبر جميع المنصات.
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+
+                <!-- General Instructions -->
+                <li>
+                    <span class="font-semibold">تعليمات عامة:</span>
+                    <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                        <li>تأكد من التحقق من البوابة بانتظام، خاصة خلال فترات التسجيل، الانسحاب، والإضافة/الحذف.</li>
+                        <li>ضمان تسجيل المواد الدراسية وفق المواعيد المحددة.</li>
+                        <li>التحقق من البريد الجامعي لأي إشعارات أو تحديثات من شؤون الطلاب.</li>
+                        <li>في حال حدوث أي خطأ في تسجيل المواد أو عرض البيانات، تواصل مع كليتك.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+                                    <!-- University-Email as divs -->
+                                    <div id="University-Email" class="mb-8" dir="rtl">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+        7.3 البريد الإلكتروني الجامعي
+    </h2>
+    <div>
+        <p class="mb-4">
+            البريد الإلكتروني الجامعي هو وسيلة التواصل الرسمية المعتمدة بين الطالب والجامعة. من خلاله يتم إرسال واستقبال الرسائل المتعلقة بالمسار الأكاديمي، مثل الإعلانات الرسمية، جداول المحاضرات، نتائج الامتحانات، والإشعارات الهامة الأخرى.
+        </p>
+
+        <ul class="list-disc list-outside ml-6 space-y-4">
+            <!-- Importance of University Email -->
+            <li>
+                <span class="font-semibold">أهمية البريد الإلكتروني الجامعي:</span>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>استلام الإشعارات الرسمية من الكلية أو الجامعة.</li>
+                    <li>التواصل مع أعضاء هيئة التدريس والإدارات المختلفة.</li>
+                    <li>إرسال الاستفسارات الأكاديمية والإدارية.</li>
+                    <li>التمتع بسعة تخزين كبيرة وخدمات بريد إلكتروني احترافية.</li>
+                </ul>
+            </li>
+
+            <!-- How to Access University Email -->
+            <li>
+                <span class="font-semibold">كيفية الوصول إلى البريد الإلكتروني الجامعي:</span>
+                <ol class="list-decimal list-outside ml-6 space-y-2 mt-2">
+                    <li>
+                        زيارة الرابط:
+                        <a href="https://webmail.fue.edu.eg" target="_blank" class="text-blue-600 underline">
+                            webmail.fue.edu.eg
+                        </a>
+                    </li>
+                    <li>
+                        تسجيل الدخول باستخدام:
+                        <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                            <li><span class="font-semibold">اسم المستخدم:</span> البريد الإلكتروني الجامعي بالشكل: StudentID@fue.edu.eg</li>
+                            <li><span class="font-semibold">كلمة المرور:</span> [مقدمة للطالب عند تفعيل الحساب]</li>
+                        </ul>
+                        <p class="ml-2 mt-2 text-red-600 font-semibold">
+                            يُنصح بتحديث كلمة المرور بعد تسجيل الدخول الأول للحفاظ على أمان الحساب. كلمة المرور موحدة عبر جميع المنصات.
+                        </p>
+                    </li>
+                </ol>
+            </li>
+
+            <!-- General Instructions -->
+            <li>
+                <span class="font-semibold">تعليمات عامة لاستخدام البريد الإلكتروني الجامعي:</span>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>تحقق من بريدك الإلكتروني الجامعي يوميًا لتجنب فقدان أي معلومات مهمة.</li>
+                    <li>استخدم بريدك الجامعي فقط للأغراض الأكاديمية والرسمية.</li>
+                    <li>لا تشارك بيانات تسجيل الدخول الخاصة بك مع أي شخص.</li>
+                    <li>التزم بالآداب المهنية عند كتابة الرسائل الإلكترونية، خاصة عند التواصل مع الأساتذة أو الإدارات.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+                                    <!-- Zoom Platform for Virtual Lectures as divs -->
+                                    <div id="Zoom-Platform-for-Virtual-Lectures" class="mb-8" dir="rtl">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+        7.4 منصة Zoom للمحاضرات الافتراضية
+    </h2>
+
+    <div>
+        <p class="mb-4">
+            <strong>Zoom</strong> هو منصة إلكترونية تُستخدم لعقد المحاضرات والاجتماعات الافتراضية عبر الإنترنت بالصوت والصورة. وهي واحدة من الأدوات الرئيسية المعتمدة من قبل الجامعة للتعلم عن بُعد أو المحاضرات الهجينة (حضورية + عبر الإنترنت).
+        </p>
+
+        <ul class="list-disc list-outside ml-6 space-y-4">
+            <!-- Importance of Zoom -->
+            <li>
+                <span class="font-semibold">أهمية Zoom للطلاب:</span>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>حضور المحاضرات والندوات المباشرة من أي مكان.</li>
+                    <li>التفاعل مع المحاضر والزملاء عبر الصوت أو الدردشة.</li>
+                    <li>القدرة على تسجيل المحاضرات والرجوع إليها لاحقًا.</li>
+                    <li>المشاركة في النقاشات الجماعية أو العروض التقديمية الافتراضية.</li>
+                </ul>
+            </li>
+
+            <!-- How to Join Lectures -->
+            <li>
+                <span class="font-semibold">كيفية الانضمام إلى المحاضرات عبر Zoom:</span>
+                <ol class="list-decimal list-outside ml-6 space-y-2 mt-2">
+                    <li>
+                        الوصول إلى رابط الجلسة المرسل من قبل المحاضر عبر منصة Moodle.
+                    </li>
+                    <li>
+                        يمكنك الانضمام مباشرة من خلال:
+                        <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                            <li>متصفح الإنترنت الخاص بك.</li>
+                            <li>تطبيق Zoom على هاتفك أو الكمبيوتر.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        عند الانضمام:
+                        <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                            <li>يوصى بتسجيل الدخول باستخدام بريدك الإلكتروني الجامعي.</li>
+                            <li>قم بإدخال اسمك الجامعي الكامل لتتمكن الإدارة من التعرف عليك في الجلسة.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+                                    <!-- Technical-Support as divs -->
+                                    <div id="Technical-Support" class="mb-8" dir="rtl">
+    <h2 class="text-xl md:text-2xl lg:text-3xl text-primary font-bold leading-normal pb-4">
+        7.5 الدعم الفني
+    </h2>
+
+    <div>
+        <p class="my-2">
+            إذا واجهت أي مشكلات فنية تتعلق بالوصول إلى المنصات أو استخدامها، يمكنك التواصل مع قسم الدعم الفني عبر:
+        </p>
+        <ul class="list-disc list-outside ml-6 space-y-2">
+            <li>
+                <span class="font-semibold">الدعم الفني:</span>
+                <ul class="list-[circle] list-outside ml-6 space-y-1 mt-2">
+                    <li>البريد الإلكتروني: <a href="mailto:itsupport@fue.edu.eg" class="text-blue-600 underline">itsupport@fue.edu.eg</a></li>
+                    <li>التوجه مباشرة إلى قسم تكنولوجيا المعلومات في الحرم الجامعي بالمبنى الإداري 2.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                </section>
+
+                  <!-- Individual content divs for submenus (hidden, used for single view) -->
+                  <div
+                    id="single-content-wrapper"
+                    class="content-section opacity-0 hidden transition-opacity duration-300 overflow-y-auto"
+                  >
+                    <!-- This will be populated dynamically with single div -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+   
+
+    <!-- Footer -->
+    <footer class="bg-[#A10F14] text-white py-16" dir="rtl">
+        <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Logo and Description -->
+            <div class="space-y-6">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/c7940c3d5ab907b4ee635cd3bd8f84a79fbc3a28?width=520"
+                alt="جامعة المستقبل في مصر"
+                class="h-20 w-auto"
+              />
+              <p class="text-white/90 leading-relaxed">
+                تسعى جامعة المستقبل في مصر إلى تقديم تعليم عالي الجودة وإعداد الطلاب
+                لمستقبل مهني ناجح في بيئة عالمية.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-6">
+              <h3 class="text-xl font-medium">روابط سريعة</h3>
+              <div class="space-y-3">
+                <a href="/" class="block hover:text-gray-300 transition-colors"
+                  >الرئيسية</a
+                >
+                <a
+                  href="/student-guide"
+                  class="block hover:text-gray-300 transition-colors"
+                  >دليل الطالب</a
+                >
+                <a
+                  href="/study-plans"
+                  class="block hover:text-gray-300 transition-colors"
+                  >الخطط الدراسية</a
+                >
+                <a
+                  href="/academic-calendar"
+                  class="block hover:text-gray-300 transition-colors"
+                  >التقويم الأكاديمي</a
+                >
+              </div>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="space-y-6">
+              <h3 class="text-xl font-medium">تواصل معنا</h3>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <i
+                    data-lucide="map-pin"
+                    class="w-5 h-5 text-white mt-0.5 flex-shrink-0"
+                  ></i>
+                  <span class="leading-relaxed"
+                    >حرم جامعة المستقبل، نهاية شارع التسعين، التجمع الخامس، القاهرة
+                    الجديدة</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+                  <span>+20 2 26189900</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+                  <span>info@fue.edu.eg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-12 mt-12 border-t border-white/20">
+            <div
+              class="flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+              <p class="text-white/90">
+                © 2025 جامعة المستقبل في مصر. جميع الحقوق محفوظة.
+              </p>
+              <div class="flex gap-6">
+                <a
+                  href="/privacy"
+                  class="text-white/90 hover:text-white transition-colors"
+                  >سياسة الخصوصية</a
+                >
+                <a
+                  href="/terms"
+                  class="text-white/90 hover:text-white transition-colors"
+                  >شروط الاستخدام</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+    <!-- js code ============================ -->
+
+    <script src="/script.js"></script>
+  </body>
+</html>

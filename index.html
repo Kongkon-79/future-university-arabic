@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FUTURE UNIVERSITY IN EGYPT</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.441.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "university-red": "#B91C1C",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body>
+    <div class="min-h-screen bg-gray-50">
+      <!-- Header -->
+
+      <div class="bg-white sticky top-0 z-50" dir="rtl">
+      <nav class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10">
+        <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="flex justify-between items-center h-16">
+            <!-- Logo and Language -->
+            <div class="flex items-center gap-10">
+              <a href="index.html">
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/2d316bb90db8bdfd99985c7d8b9a3db4557ec01d?width=310"
+                  alt="Future University in Egypt" class="h-12 w-auto" />
+              </a>
+
+              <!-- Language Selector -->
+              <div class="relative">
+                <button id="languageBtn"
+                  class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center bg-red-700 hover:bg-red-700 transition-colors">
+                  En
+                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div id="languageDropdown"
+                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Arabic</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+              <!-- Navigation Links -->
+              <div class="flex items-center space-x-6">
+                <a href="/" class="text-gray-700 hover:text-university-red font-medium transition-colors ml-8">الرئيسية</a>
+
+                <!-- Student Guide Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studentGuideBtn">
+    دليل الطالب
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studentGuideDropdown"
+    class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 hidden overflow-hidden">
+    <!-- سياسات وإجراءات القبول -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>سياسات وإجراءات القبول</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="font-medium">
+            سياسة القبول في الجامعة
+          </div>
+          <div>الإطار العام لسياسات القبول</div>
+          <div>إجراءات التقديم للجامعة</div>
+          <div>حجز اختبارات القبول</div>
+          <div>إجراءات القبول النهائية</div>
+          <div>المستندات المطلوبة العامة</div>
+          <div>القواعد العامة للقبول</div>
+          <div>معايير اختيار المتقدمين</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نظام الدراسة -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>نظام الدراسة</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>نظام الساعات المعتمدة</div>
+          <div>تعريف الساعة المعتمدة</div>
+          <div>الفصول الدراسية</div>
+          <div>سياسة تقييم الطلاب</div>
+          <div>امتحانات الطلاب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- حقوق ومسؤوليات الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>حقوق ومسؤوليات الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>سلوك الطالب</div>
+          <div>الشكاوى والمظالم</div>
+          <div>حقوق الطالب</div>
+          <div>مسؤوليات الطالب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- منصات التواصل عبر الإنترنت -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>المنصات الإلكترونية</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>منصة Moodle</div>
+          <div>البوابة الإلكترونية للطلاب</div>
+          <div>البريد الإلكتروني الجامعي</div>
+          <div>Zoom للمحاضرات الافتراضية</div>
+          <div>الدعم الفني</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- دعم الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>دعم الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div>موارد الكمبيوتر وتكنولوجيا المعلومات</div>
+          <div>سياسات استخدام الإنترنت</div>
+          <div>خدمات الطلاب</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- Study Plans Dropdown -->
+               <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studyPlansBtn">
+    الخطط الدراسية
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studyPlansDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية طب الفم والأسنان</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الصيدلة</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الهندسة والتكنولوجيا</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الحاسبات وتكنولوجيا المعلومات</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الاقتصاد والعلوم السياسية</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية التجارة وإدارة الأعمال</a>
+  </div>
+</div>
+
+                <!-- Academic Calendar Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="academicCalendarBtn">
+    التقويم الأكاديمي
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="academicCalendarDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الصيف 2026</a>
+  </div>
+</div>
+              </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+              <button id="mobileMenuBtn"
+                class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+                  <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+          <div class="px-4 pt-2 pb-3 space-y-1">
+
+            <a href="#"
+              class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">Home</a>
+
+            <!-- Mobile Student Guide -->
+            <div>
+              <button id="mobileStudentGuideBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Student Guide
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileStudentGuideDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Admission
+                  Guide</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Course
+                  Registration</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Student
+                  Services</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Campus
+                  Life</a>
+              </div>
+            </div>
+
+            <!-- Mobile Study Plans -->
+            <div>
+              <button id="mobileStudyPlansBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Study Plans
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileStudyPlansDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Undergraduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Graduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Doctoral</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Certificate
+                  Programs</a>
+              </div>
+            </div>
+
+            <!-- Mobile Academic Calendar -->
+            <div>
+              <button id="mobileAcademicCalendarBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Academic Calendar
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileAcademicCalendarDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Fall
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Spring
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Summer
+                  Session</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Important
+                  Dates</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+      <!-- Hero Section -->
+      <section class="relative h-[850px] flex items-center" dir="rtl">
+        <div
+          class="absolute inset-0 bg-cover bg-center"
+          style="
+            background-image: url('https://api.builder.io/api/v1/image/assets/TEMP/cb2af87c7c105e38a742a7ff6e0ccab58a35b804?width=3840');
+          "
+        ></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <div
+          class="relative max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0 grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <!-- Left Content -->
+          <div class="space-y-10">
+            <div class="space-y-6">
+              <div
+                class="inline-flex items-center px-4 py-1.5 bg-[#B11116] text-white text-xs font-medium rounded-full"
+              >
+                الجامعة المستقبلية في مصر
+              </div>
+
+              <div class="space-y-6">
+                <div class="space-y-2">
+                  <h1
+                    class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+                  >
+                    <span class="text-white">صمم مستقبلك </span>
+                    <span class="text-[#FACC15]">من خلال التعليم</span>
+                  </h1>
+                  <div class="w-25 h-1.5 bg-[#B11116]"></div>
+                </div>
+                <p class="text-gray-200 text-lg leading-relaxed max-w-2xl">
+                  اكتشف تعليمًا عالميًا يعدك للنجاح في بيئة عالمية
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-8">
+              <div class="relative max-w-[408px]">
+                <input
+                  type="text"
+                  placeholder="ابحث عن البرامج، الدورات، الأحداث..."
+                  class="w-full flex items-center gap-3 p-4 rounded-md border border-white/20 bg-white/5 backdrop-blur-sm text-gray-300 placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-white/30 pr-12 text-right"
+                />
+                <i
+                  data-lucide="search"
+                  class="absolute right-5 !top-[19px] w-5 h-5 text-gray-300 pointer-events-none"
+                ></i>
+              </div>
+
+              <button
+                class="flex items-center gap-2 bg-[#B11116] text-white px-6 py-4 rounded-md shadow-lg hover:bg-[#A10F14] transition-colors"
+              >
+                <span class="font-medium">استكشف البرامج</span>
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Content - Cards -->
+          <div class="space-y-10">
+            <div class="flex flex-col gap-6">
+              <!-- Student Guide Card -->
+              <a href="student-guide.html"">
+                <div
+                  class="flex items-center justify-between p-6 rounded-xl border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="p-3 bg-[#B11116] rounded-md">
+                      <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-white text-lg font-semibold">
+                        دليل الطالب
+                      </h3>
+                      <p class="text-white/80">معلومات أساسية للطلاب</p>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-left" class="w-5 h-5 text-white"></i>
+                </div>
+              </a>
+
+              <!-- Study Plans Card -->
+              <a href="study-plan.html">
+                <div
+                  class="flex items-center justify-between p-6 rounded-xl border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="p-3 bg-[#B11116] rounded-md">
+                      <i
+                        data-lucide="graduation-cap"
+                        class="w-8 h-8 text-white"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3 class="text-white text-lg font-semibold">
+                        الخطط الدراسية
+                      </h3>
+                      <p class="text-white/80">المسارات والبرامج الأكاديمية</p>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-left" class="w-5 h-5 text-white"></i>
+                </div>
+              </a>
+
+              <!-- Academic Calendar Card -->
+              <a href="academic-calendar-and-list.html">
+                <div
+                  class="flex items-center justify-between p-6 rounded-xl border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+                >
+                  <div class="flex items-center gap-4">
+                    <div class="p-3 bg-[#B11116] rounded-md">
+                      <i data-lucide="calendar" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-white text-lg font-semibold">
+                        التقويم الأكاديمي
+                      </h3>
+                      <p class="text-white/80">التواريخ والمواعيد الهامة</p>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-left" class="w-5 h-5 text-white"></i>
+                </div>
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-6">
+              <div
+                class="text-center p-6 rounded-md border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+              >
+                <div class="text-2xl font-semibold text-[#FACC15]">50+</div>
+                <div class="text-white">برنامج</div>
+              </div>
+              <div
+                class="text-center p-6 rounded-md border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+              >
+                <div class="text-2xl font-semibold text-[#FACC15]">25k+</div>
+                <div class="text-white">خريج</div>
+              </div>
+              <div
+                class="text-center p-6 rounded-md border border-gray-500/50 bg-black/30 backdrop-blur-sm"
+              >
+                <div class="text-2xl font-semibold text-[#FACC15]">90%</div>
+                <div class="text-white">توظيف</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Faculties Section -->
+      <section class="py-20 bg-gray-50" dir="rtl">
+        <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="text-center space-y-6 mb-20">
+            <h2 class="text-4xl font-bold text-[#B11116]">كلياتنا</h2>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">
+              اكتشف مجموعة كلياتنا المتنوعة التي تقدم تعليماً عالمياً وفرصاً بحثية متميزة
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Faculty Cards -->
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(124, 148, 164, 0.3) 0%,
+                      rgba(124, 148, 164, 0.3) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/cc51a54b85d175c403bdb3e45ad1ea81100191d5?width=1008');
+                "
+              ></div>
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية طب الفم والأسنان
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    بكالوريوس في جراحة الأسنان (BDS)؛ ماجستير في التركيبات الصناعية، تجميل واستعاضة الأسنان، علاج الجذور، جراحة الفم والوجه والفكين، تقويم الأسنان، طب أسنان الأطفال، أمراض اللثة، صحة الفم وطب الأسنان الوقائي، مواد طب الأسنان، طب الفم؛ دكتوراه في تقويم الأسنان، جراحة الفم والوجه والفكين
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(155, 25, 21, 0.3) 0%,
+                      rgba(155, 25, 21, 0.3) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/1b64fdd8b9442fffc5612d1a2b586d31f76d7854?width=1008');
+                "
+              ></div>
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية الصيدلة
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    دكتور صيدلة (Pharm D)، دكتور صيدلة - صيدلة إكلينيكية (Pharm D)، دبلومة الدراسات العليا في اليقظة الدوائية؛ ماجستير في الكيمياء الطبية، الكيمياء الصيدلية التحليلية، الصيدلانيات وتكنولوجيا الصيدلة، علم الأدوية والسموم، الكيمياء الحيوية، علم الأدوية النباتية، الميكروبيولوجيا والمناعة، ممارسة الصيدلة والصيدلة الإكلينيكية؛ دكتوراه في العلوم الصيدلية
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(32, 87, 129, 0.8) 0%,
+                      rgba(32, 87, 129, 0.8) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/1c566de75ef94e7724c5290bc28c0e4b00579bc5?width=1008');
+                "
+              ></div>
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية الهندسة والتكنولوجيا
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    بكالوريوس في الميكاترونكس، القوى الميكانيكية، أنظمة الحاسوب الذكية، الحاسبات والاتصالات، القوى الكهربية، الهندسة الطبية، العمارة، العمارة الداخلية، الإنشاءات وإدارة التشييد، هندسة البترول؛ دبلومات الدراسات العليا، ماجستير مهني وماجستير علوم في تكنولوجيا هندسة الاتصالات
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(232, 145, 61, 0.3) 0%,
+                      rgba(232, 145, 61, 0.3) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/3786371bb46d9b824adffe816a6938bb442dd5f8?width=1008');
+                "
+              ></div>
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية الحاسبات وتكنولوجيا المعلومات
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    بكالوريوس في الذكاء الاصطناعي، الأمن السيبراني، علم البيانات، علوم الحاسب، نظم المعلومات، تكنولوجيا الوسائط الرقمية؛ ماجستير في علوم الحاسب، نظم المعلومات
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(124, 132, 56, 0.3) 0%,
+                      rgba(124, 132, 56, 0.3) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/2e85c861461e4a0803d49b3cdf75f104edcb5c11?width=1008');
+                "
+              ></div>
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية الاقتصاد والعلوم السياسية
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    برامج: بكالوريوس في الإعلام السياسي، الاقتصاد، الإدارة العامة، العلوم السياسية
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative h-[416px] rounded-lg overflow-hidden shadow-lg group"
+            >
+              <div
+                class="absolute inset-0 bg-cover bg-center"
+                style="
+                  background-image: linear-gradient(
+                      0deg,
+                      rgba(105, 106, 107, 0.1) 0%,
+                      rgba(105, 106, 107, 0.1) 100%
+                    ),
+                    url('https://api.builder.io/api/v1/image/assets/TEMP/28c707500852f58aec8484f77829aa23f58101d3?width=1008');
+                "
+              ></div>
+
+              <div class="relative p-6 h-full flex flex-col">
+                <div class="p-3 bg-white rounded-md w-fit mb-5">
+                  <i
+                    data-lucide="graduation-cap"
+                    class="w-8 h-8 text-[#B11116]"
+                  ></i>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-white text-xl font-medium mb-4">
+                    كلية التجارة وإدارة الأعمال
+                  </h3>
+                  <p class="text-white text-sm leading-relaxed">
+                    بكالوريوس في التسويق، نظم المعلومات الإدارية، المحاسبة، إدارة الموارد البشرية، التمويل؛ ماجستير إدارة الأعمال المهني في إدارة الأعمال، إدارة المشروعات وريادة الأعمال، إدارة التسويق، إدارة الموارد البشرية، الاستثمار والأسواق المالية
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Future University Section -->
+      <section class="py-20 bg-white" dir="rtl">
+        <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
+          <h2 class="text-4xl font-bold text-[#B11116] text-center mb-20">
+            عن جامعة المستقبل
+          </h2>
+
+          <div class="space-y-12">
+            <!-- Vision, Mission, Core Values -->
+            <div class="grid md:grid-cols-3 gap-6">
+              <div
+                class="bg-white rounded-xl border-t-4 border-[#B11116] shadow-lg p-8 h-[350px] flex flex-col justify-between"
+              >
+                <div class="space-y-10">
+                  <div class="p-3 bg-[#B11116]/10 rounded-full w-fit">
+                    <i data-lucide="target" class="w-8 h-8 text-[#B11116]"></i>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-[#B11116] font-semibold">رؤيتنا</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                      تطمح جامعة المستقبل إلى أن تكون نموذجاً رائداً للتميز في التعليم والبحث العلمي وخدمة المجتمع، وتحقيق مكانة محلية وإقليمية مع الاعتراف الدولي.
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div
+                class="bg-white rounded-xl border-t-4 border-[#B11116] shadow-lg p-8 h-[350px] flex flex-col justify-between"
+              >
+                <div class="space-y-10">
+                  <div class="p-3 bg-[#B11116]/10 rounded-full w-fit">
+                    <i
+                      data-lucide="book-open"
+                      class="w-8 h-8 text-[#B11116]"
+                    ></i>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-[#B11116] font-semibold">رسالتنا</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                      تلتزم جامعة المستقبل بتقديم خدمة تعليمية عالمية المستوى تُعد الخريجين بالكفاءات العلمية والابتكارية اللازمة لتلبية متطلبات سوق العمل المتطورة. نسعى جاهدين لتوفير بيئة تعزز البحث العلمي، وتساهم في التنمية المستدامة والتقدم التكنولوجي، وتغرس القيم والأخلاق المهنية.
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div
+                class="bg-white rounded-xl border-t-4 border-[#B11116] shadow-lg p-8 h-[350px] flex flex-col justify-between"
+              >
+                <div class="space-y-10">
+                  <div class="p-3 bg-[#B11116]/10 rounded-full w-fit">
+                    <i data-lucide="heart" class="w-8 h-8 text-[#B11116]"></i>
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-[#B11116] font-semibold">القيم الأساسية</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                      الحرية الأكاديمية
+                      الجودة والحوكمة
+                      الإدارة الذاتية
+                      الانتماء والولاء
+                      الاحتفاظ بالكفاءات
+                      المساءلة
+                      القيادة والابتكار
+                      روح العمل الجماعي
+                      المصداقية والأمانة العلمية
+                      العدالة وعدم التمييز
+                      المسؤولية الاجتماعية
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- Notable Achievements and Global Partnerships -->
+            <div class="grid lg:grid-cols-2 gap-6">
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden md:h-[450px]"
+              >
+                <div class="bg-[#B11116] p-6 flex items-center gap-3">
+                  <i data-lucide="star" class="w-8 h-8 text-white"></i>
+                  <h3 class="text-white text-lg font-medium">
+                    الإنجازات البارزة
+                  </h3>
+                </div>
+                <div class="p-8 space-y-8">
+                  <div class="space-y-4">
+                    <h4 class="text-[#B11116] font-semibold">الإنجازات</h4>
+                    <div class="space-y-6">
+                      <div class="flex items-start gap-2">
+                        <i
+                          data-lucide="star"
+                          class="w-5 h-5 text-[#B11116] mt-0.5"
+                        ></i>
+                        <div>
+                          <h5 class="font-medium text-gray-800">
+                            الاعتمادات المحلية لجودة التعليم
+                          </h5>
+                          <ul class="mt-2 ml-6 space-y-1 text-gray-600 text-sm">
+                            <li>
+                              جميع الكليات معتمدة من الهيئة القومية لضمان جودة التعليم والاعتماد (NAQAAE).
+                            </li>
+                            <li>اعتماد مؤسسي من الهيئة القومية لضمان جودة التعليم والاعتماد.</li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start gap-2">
+                        <i
+                          data-lucide="star"
+                          class="w-5 h-5 text-[#B11116] mt-0.5"
+                        ></i>
+                        <div>
+                          <h5 class="font-medium text-gray-800">
+                            الاعتمادات الدولية لجودة التعليم
+                          </h5>
+                          <ul class="mt-2 ml-6 space-y-1 text-gray-600 text-sm">
+                            <li>
+                              برامج كلية الصيدلة معتمدة من ACPE (الولايات المتحدة الأمريكية).
+                            </li>
+                            <li>
+                              برامج كلية الحاسبات وتكنولوجيا المعلومات معتمدة من ABET (الولايات المتحدة الأمريكية).
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div class="flex items-start gap-2">
+                        <i
+                          data-lucide="star"
+                          class="w-5 h-5 text-[#B11116] mt-0.5"
+                        ></i>
+                        <div>
+                          <h5 class="font-medium text-gray-800">
+                            تكريم أعضاء هيئة التدريس
+                          </h5>
+                          <ul class="mt-2 ml-6 space-y-1 text-gray-600 text-sm">
+                            <li>
+                              أعضاء هيئة التدريس مدرجون في أفضل 2% من العلماء عالميًا (تصنيف جامعة ستانفورد).
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-xl shadow-lg overflow-hidden h-auto md:h-[450px]"
+              >
+                <div class="bg-[#B11116] p-6 flex items-center gap-3">
+                  <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                  <h3 class="text-white text-lg font-medium">
+                    الشراكات العالمية
+                  </h3>
+                </div>
+                <div class="p-8 space-y-8">
+                  <p class="text-gray-700">
+                    أنشأت جامعة المستقبل شراكات مع جامعات ومؤسسات مرموقة حول العالم لتزويد الطلاب بتجارب وفرص دولية.
+                  </p>
+
+                  <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div
+                        class="flex border border-gray-200 rounded-lg overflow-hidden"
+                      >
+                        <img
+                          src="https://api.builder.io/api/v1/image/assets/TEMP/8dc6844602fb9330e2e420ede9d2c3d17aeb1a5f?width=250"
+                          alt=""
+                          class="w-20 h-full object-cover"
+                        />
+                        <div class="p-3 flex-1">
+                          <h4 class="font-medium text-gray-800 text-sm">
+                            كلية طب الفم والأسنان
+                          </h4>
+                          <p class="text-gray-600 text-xs">
+                            Case Western Reserve University, الولايات المتحدة الأمريكية
+                          </p>
+                        </div>
+                      </div>
+
+                      <div
+                        class="flex border border-gray-200 rounded-lg overflow-hidden"
+                      >
+                        <img
+                          src="https://api.builder.io/api/v1/image/assets/TEMP/d5f2367672a079ec44bd15e9c62f13394bf539c2?width=250"
+                          alt=""
+                          class="w-20 h-full object-cover"
+                        />
+                        <div class="p-3 flex-1">
+                          <h4 class="font-medium text-gray-800 text-sm">
+                            كلية الصيدلة
+                          </h4>
+                          <p class="text-gray-600 text-xs">
+                            University College Cork, أيرلندا
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div
+                        class="flex border border-gray-200 rounded-lg overflow-hidden"
+                      >
+                        <img
+                          src="https://api.builder.io/api/v1/image/assets/TEMP/ef8354540263a1d2cf4784921c628bd557ff050a?width=250"
+                          alt=""
+                          class="w-20 h-full object-cover"
+                        />
+                        <div class="p-3 flex-1">
+                          <h4 class="font-medium text-gray-800 text-sm">
+                            كلية الهندسة والتكنولوجيا
+                          </h4>
+                          <p class="text-gray-600 text-xs">
+                            University of Cincinnati, الولايات المتحدة الأمريكية
+                          </p>
+                        </div>
+                      </div>
+
+                      <div
+                        class="flex border border-gray-200 rounded-lg overflow-hidden"
+                      >
+                        <img
+                          src="https://api.builder.io/api/v1/image/assets/TEMP/0fa2cb6e1f813c9a7dae3496fb5ce735356a0b5b?width=250"
+                          alt=""
+                          class="w-20 h-full object-cover"
+                        />
+                        <div class="p-3 flex-1">
+                          <h4 class="font-medium text-gray-800 text-sm">
+                            كلية التجارة وإدارة الأعمال
+                          </h4>
+                          <p class="text-gray-600 text-xs">
+                            University of Cincinnati, الولايات المتحدة الأمريكية
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- Campus Life -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-gray-900">
+                  الحياة في حرم جامعة المستقبل
+                </h3>
+                <p class="text-gray-700">
+                  استمتع بمجتمع حيوي في الحرم الجامعي مع مرافق حديثة، وأنشطة طلابية متنوعة، وبيئة داعمة مصممة لمساعدتك على الازدهار أكاديمياً وشخصياً.
+                </p>
+
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3">
+                    <div class="p-1 bg-[#B11116]/20 rounded-full">
+                      <i data-lucide="check" class="w-4 h-4 text-[#B11116]"></i>
+                    </div>
+                    <span class="text-gray-700"
+                      >مرافق رياضية حديثة ومركز لياقة بدنية</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="p-1 bg-[#B11116]/20 rounded-full">
+                      <i data-lucide="check" class="w-4 h-4 text-[#B11116]"></i>
+                    </div>
+                    <span class="text-gray-700"
+                      >أندية ومنظمات طلابية لكل الاهتمامات</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="p-1 bg-[#B11116]/20 rounded-full">
+                      <i data-lucide="check" class="w-4 h-4 text-[#B11116]"></i>
+                    </div>
+                    <span class="text-gray-700"
+                      >مكتبة حديثة ومراكز بحثية</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="p-1 bg-[#B11116]/20 rounded-full">
+                      <i data-lucide="check" class="w-4 h-4 text-[#B11116]"></i>
+                    </div>
+                    <span class="text-gray-700"
+                      >فعاليات ثقافية وبرامج التبادل الدولي</span
+                    >
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="p-1 bg-[#B11116]/20 rounded-full">
+                      <i data-lucide="check" class="w-4 h-4 text-[#B11116]"></i>
+                    </div>
+                    <span class="text-gray-700"
+                      >خدمات وظيفية وفرص تدريب</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-6">
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/8dd067e6aaf8e0ca3fee208ead15909fb3d4c000?width=612"
+                  alt="الحياة الجامعية"
+                  class="rounded-lg h-60 w-full object-cover"
+                />
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/1083fe1783e525963a93fc1983163c7578a85e1f?width=612"
+                  alt="الحياة الجامعية"
+                  class="rounded-lg h-60 w-full object-cover"
+                />
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/8db62aede45a2e3f3cbd999be033f8acb885e9dc?width=612"
+                  alt="الحياة الجامعية"
+                  class="rounded-lg h-60 w-full object-cover"
+                />
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/fd2d862c4b054b968d3dac2fc212b19adac0de2b?width=612"
+                  alt="الحياة الجامعية"
+                  class="rounded-lg h-60 w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Calendar Section -->
+      <!-- Academic Calendar Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
+        <div class="text-center space-y-6 mb-20">
+  <h2 class="text-4xl font-bold text-[#B11116]">التقويم الأكاديمي</h2>
+  <p class="text-gray-700 text-lg max-w-3xl mx-auto">
+    ابقَ على اطلاع بمواعيد التسجيل الهامة، المواعيد النهائية، والإجازات
+  </p>
+</div>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="bg-[#B11116] p-6 flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <i data-lucide="calendar" class="w-6 h-6 text-white"></i>
+    <h3 class="text-white text-[16px] md:text-lg font-medium">
+      التقويم الأكاديمي ٢٠٢٥-٢٠٢٦
+    </h3>
+  </div>
+  <a href="academic-calendar-and-list.html">
+    <button
+      class="flex items-center gap-2 bg-[#B11116] text-white px-4 py-2 rounded-md hover:bg-[#A10F14] transition-colors">
+      <span class="text-xs md:text-sm font-medium">عرض التقويم الكامل</span>
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </button>
+  </a>
+</div>
+
+          <div class="p-5 md:p-10 space-y-6" dir="rtl">
+            <!-- Registration -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-14 p-7 border border-gray-200 rounded-lg border-r-4 border-r-blue-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-blue-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+    </div>
+    <div>
+      <div class="text-blue-600 font-medium">التسجيل</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ٦ سبتمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        تسجيل الفصل الدراسي الخريفي
+      </div>
+      <div class="text-gray-600">
+        يبدأ تسجيل المقررات يوم السبت، ٦ سبتمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Orientation -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-32 p-7 border border-gray-200 rounded-lg border-r-4 border-r-green-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-green-600/20 rounded-full">
+      <i data-lucide="graduation-cap" class="w-5 h-5 text-green-600"></i>
+    </div>
+    <div>
+      <div class="text-green-600 font-medium">أيام التعريف</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ١٤ إلى ١٦ سبتمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        أيام التعريف للفصل الدراسي الخريفي
+      </div>
+      <div class="text-gray-600">
+        أيام التعريف: ١٤، ١٥، ١٦ سبتمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- class begin -->
+           <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-12 p-7 border border-gray-200 rounded-lg border-r-4 border-r-yellow-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-yellow-600/20 rounded-full">
+      <i data-lucide="book-open" class="w-5 h-5 text-yellow-600"></i>
+    </div>
+    <div>
+      <div class="text-yellow-600 font-medium">بداية الدراسة</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ٢٠ سبتمبر إلى ١ يناير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        بداية الدراسة
+      </div>
+      <div class="text-gray-600">
+        تبدأ الدراسة للفصل الدراسي الأول يوم السبت، ٢٠ سبتمبر ٢٠٢٥، وتستمر حتى الخميس، ١ يناير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Study Duration -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-red-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-red-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-red-600"></i>
+    </div>
+    <div>
+      <div class="text-red-600 font-medium">مدة الدراسة</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ١٥ أسبوعًا تشمل امتحانات منتصف الفصل
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        مدة الدراسة
+      </div>
+      <div class="text-gray-600">
+        ١٥ أسبوعًا تشمل امتحانات منتصف الفصل
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Midterm Exams -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-blue-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-blue-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+    </div>
+    <div>
+      <div class="text-blue-600 font-medium">امتحانات منتصف الفصل</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ١ نوفمبر إلى ١٣ نوفمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        امتحانات منتصف الفصل
+      </div>
+      <div class="text-gray-600">
+        (أسبوعين) تبدأ من ١ نوفمبر ٢٠٢٥ إلى ١٣ نوفمبر ٢٠٢٥،
+        تشمل امتحانات منتصف الفصل للمتطلبات الجامعية.
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Last date for withdrawal -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-green-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-green-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-green-600"></i>
+    </div>
+    <div>
+      <div class="text-green-600 font-medium">آخر موعد للسحب</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ١٦ ديسمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        آخر موعد للسحب
+      </div>
+      <div class="text-gray-600">
+        ١٦ ديسمبر ٢٠٢٥
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Final Exams -->
+            <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-yellow-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-yellow-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-yellow-600"></i>
+    </div>
+    <div>
+      <div class="text-yellow-600 font-medium">الامتحانات النهائية</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ٣ يناير إلى ٢٢ يناير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        الامتحانات النهائية
+      </div>
+      <div class="text-gray-600">
+        من السبت، ٣ يناير ٢٠٢٦، إلى الخميس، ٢٢ يناير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Mid-Year Vacation -->
+           <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-red-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-red-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-red-600"></i>
+    </div>
+    <div>
+      <div class="text-red-600 font-medium">إجازة منتصف العام</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ٢٤ يناير إلى ٥ فبراير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        إجازة منتصف العام
+      </div>
+      <div class="text-gray-600">
+        من السبت، ٢٤ يناير ٢٠٢٦، إلى الخميس، ٥ فبراير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+</div>
+
+            <!-- Vacations -->
+          <div
+  class="flex flex-col md:flex-row items-start md:items-center gap-7 md:gap-44 p-7 border border-gray-200 rounded-lg border-r-4 border-r-blue-600">
+  <div class="flex items-start gap-4">
+    <div class="p-2 bg-blue-600/20 rounded-full">
+      <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i>
+    </div>
+    <div>
+      <div class="text-blue-600 font-medium">الإجازات</div>
+      <div class="text-[12px] md:text-base text-gray-900 font-semibold">
+        ٦ أكتوبر ٢٠٢٥ إلى ٧ يناير ٢٠٢٦
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center gap-6">
+    <div class="w-px h-16 bg-gray-300 hidden md:block"></div>
+    <div>
+      <div class="font-semibold text-gray-900">
+        الإجازات
+      </div>
+      <div class="text-gray-600">
+        • الإثنين، ٦ أكتوبر ٢٠٢٥: عيد القوات المسلحة<br>
+        • الأربعاء، ٧ يناير ٢٠٢٦: عيد الميلاد المجيد
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- Footer -->
+      <footer class="bg-[#A10F14] text-white py-16" dir="rtl">
+        <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Logo and Description -->
+            <div class="space-y-6">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/c7940c3d5ab907b4ee635cd3bd8f84a79fbc3a28?width=520"
+                alt="جامعة المستقبل في مصر"
+                class="h-20 w-auto"
+              />
+              <p class="text-white/90 leading-relaxed">
+                تسعى جامعة المستقبل في مصر إلى تقديم تعليم عالي الجودة وإعداد الطلاب
+                لمستقبل مهني ناجح في بيئة عالمية.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-6">
+              <h3 class="text-xl font-medium">روابط سريعة</h3>
+              <div class="space-y-3">
+                <a href="/" class="block hover:text-gray-300 transition-colors"
+                  >الرئيسية</a
+                >
+                <a
+                  href="/student-guide"
+                  class="block hover:text-gray-300 transition-colors"
+                  >دليل الطالب</a
+                >
+                <a
+                  href="/study-plans"
+                  class="block hover:text-gray-300 transition-colors"
+                  >الخطط الدراسية</a
+                >
+                <a
+                  href="/academic-calendar"
+                  class="block hover:text-gray-300 transition-colors"
+                  >التقويم الأكاديمي</a
+                >
+              </div>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="space-y-6">
+              <h3 class="text-xl font-medium">تواصل معنا</h3>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <i
+                    data-lucide="map-pin"
+                    class="w-5 h-5 text-white mt-0.5 flex-shrink-0"
+                  ></i>
+                  <span class="leading-relaxed"
+                    >حرم جامعة المستقبل، نهاية شارع التسعين، التجمع الخامس، القاهرة
+                    الجديدة</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+                  <span>+20 2 26189900</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+                  <span>info@fue.edu.eg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-12 mt-12 border-t border-white/20">
+            <div
+              class="flex flex-col md:flex-row justify-between items-center gap-4"
+            >
+              <p class="text-white/90">
+                © 2025 جامعة المستقبل في مصر. جميع الحقوق محفوظة.
+              </p>
+              <div class="flex gap-6">
+                <a
+                  href="/privacy"
+                  class="text-white/90 hover:text-white transition-colors"
+                  >سياسة الخصوصية</a
+                >
+                <a
+                  href="/terms"
+                  class="text-white/90 hover:text-white transition-colors"
+                  >شروط الاستخدام</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+
+    <!-- script for Navbar and Dropdowns  -->
+    <script src="/script.js"></script>
+  </body>
+</html>
