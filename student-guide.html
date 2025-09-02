@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Sidebar Layout</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script>
       tailwind.config = {
         theme: {
@@ -22,7 +24,7 @@
   <body class="bg-gray-50 font-sans">
     <!-- Header -->
 
-       <div class="bg-white sticky top-0 z-50" dir="rtl">
+       <div class="bg-white sticky top-0 z-50 px-2 md:px-8 lg:px-12" dir="rtl">
       <nav class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10">
         <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
           <div class="flex justify-between items-center h-16">
@@ -325,7 +327,7 @@
 
     <!-- Hero Section -->
     <section
-  class="relative h-64 md:h-[500px] lg:h-[568px] bg-cover bg-center"
+  class="relative h-64 md:h-[500px] lg:h-[568px] bg-cover bg-center px-2 md:px-8 lg:px-12"
   style="background-image: url('./images/h1.png')"
 >
   <div class="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -349,13 +351,13 @@
     <!-- Overlay for mobile -->
     <div
       id="overlay"
-      class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"
+      class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden px-2 md:px-8 lg:px-12"
     ></div>
 
     <!-- <h1 class="bg-red-200">neww</h1> -->
 
     <!-- Main Content Wrapper -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-7xl mx-auto px-2 md:px-8 lg:px-12 py-8">
       <div class="flex flex-col lg:flex-row gap-8">
         <!-- Sidebar -->
    <div class="flex flex-col gap-5">
@@ -2798,7 +2800,7 @@
    
 
     <!-- Footer -->
-    <footer class="bg-[#A10F14] text-white py-16" dir="rtl">
+    <footer class="bg-[#A10F14] text-white py-16 px-2 md:px-8 lg:px-12" dir="rtl">
         <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
           <div class="grid lg:grid-cols-3 gap-12">
             <!-- Logo and Description -->
@@ -2893,5 +2895,8 @@
     <!-- js code ============================ -->
 
     <script src="/script.js"></script>
+    <script>
+  lucide.createIcons();
+</script>
   </body>
 </html>
