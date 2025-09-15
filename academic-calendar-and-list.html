@@ -54,406 +54,404 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
-      <style>
-    .fc-daygrid-day-number {
-      color: #374151;
-    }
+    <style>
+      .fc-daygrid-day-number {
+        color: #374151;
+      }
 
-    .fc-daygrid-day.fc-day-today {
-      background-color: #fefcbf;
-    }
+      .fc-daygrid-day.fc-day-today {
+        background-color: #fefcbf;
+      }
 
-    .fc .fc-daygrid-day-top {
-      flex-direction: column;
-    }
+      .fc .fc-daygrid-day-top {
+        flex-direction: column;
+      }
 
-    .custom-event {
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      margin-top: 2px;
-    }
+      .custom-event {
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin-top: 2px;
+      }
 
-    .registration-event {
-      background-color: #3b82f6;
-      color: white;
-    }
+      .registration-event {
+        background-color: #3b82f6;
+        color: white;
+      }
 
-    .orientation-event {
-      background-color: #dc2626;
-      color: white;
-    }
+      .orientation-event {
+        background-color: #dc2626;
+        color: white;
+      }
 
-    .class-begin-event {
-      background-color: #10b981;
-      color: white;
-    }
+      .class-begin-event {
+        background-color: #10b981;
+        color: white;
+      }
 
-    .exam-event {
-      background-color: #eab308;
-      color: white;
-    }
+      .exam-event {
+        background-color: #eab308;
+        color: white;
+      }
 
-    .withdrawal-event {
-      background-color: #499fc0;
-      color: white;
-    }
+      .withdrawal-event {
+        background-color: #499fc0;
+        color: white;
+      }
 
-    .holiday-event {
-      background-color: #ef4444;
-      color: white;
-    }
+      .holiday-event {
+        background-color: #ef4444;
+        color: white;
+      }
 
-    .fc-daygrid-day-events {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column-reverse;
-    }
+      .fc-daygrid-day-events {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
-    #eventList {
-      display: none;
-      /* max-height: 600px; */
-      overflow-y: auto;
-      /* Ensure smooth scrolling */
-      background-color: white;
-      border-radius: 0.5rem;
-      /* Match rounded corners */
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      /* Consistent shadow */
-    }
-
-    #eventList .event-container {
-      padding: 1.25rem 2.5rem;
-      /* Consistent padding (20px 40px) */
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      /* Space between events (24px) */
-    }
-
-    #eventList .event-item {
-      width: 100%;
-      /* Ensure full width */
-      box-sizing: border-box;
-      /* Include padding in width calculation */
-    }
-
-    .selected-event {
-      background-color: #f0f4f8;
-      /* Light highlight */
-      border-left-width: 6px;
-      /* Thicker left border */
-      border-left-color: inherit;
-      /* Match the event's border color */
-      padding-left: 1rem;
-      /* Adjust padding to account for border */
-    }
-
-    #eventList th,
-    #eventList td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    #eventList th {
-      background-color: #f3f4f6;
-      font-weight: bold;
-    }
-
-    .active-btn {
-      background-color: #facc15 !important;
-    }
-
-    .level-item {
-      cursor: pointer;
-      transition: background-color 0.3s;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      padding-right: 10px;
-    }
-
-    .level-item.active {
-      background-color: #B11116;
-      color: white;
-      font-weight: bold;
-      padding-right: 10px;
-
-    }
-
-    /* first Level */
-
-    .faculty-content {
-      display: none;
-      padding-left: 14px;
-
-    }
-
-    .faculty-content.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-
-    }
-
-    .faculty-header {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    .faculty-header.active {
-      background-color: #b111161a;
-      border: 2px solid red;
-    }
-
-
-    /* second Level */
-
-    .faculty-content1 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content1.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header1 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* third Level */
-
-    .faculty-content2 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content2.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header2 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* fourth Level */
-
-    .faculty-content3 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content3.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header3 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* fifth Level */
-
-    .faculty-content4 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content4.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header4 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* six Level */
-
-    .faculty-content5 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content5.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header5 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* seven Level */
-
-    .faculty-content6 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content6.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header6 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* eight Level */
-
-    .faculty-content7 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content7.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header7 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* nine Level */
-
-    .faculty-content8 {
-      display: none;
-      padding-left: 14px;
-    }
-
-    .faculty-content8.active {
-      display: block;
-      background-color: #b111161a;
-      color: #2f2f2f;
-      font-weight: normal;
-      border-left: 4px solid #B11116;
-    }
-
-    .faculty-header8 {
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      /* padding: 10px; */
-      font-weight: medium;
-      font-size: 18px;
-      color: #b11116;
-      /* background-color: #b111161a; */
-    }
-
-    /* Ensure responsiveness */
-    @media (max-width: 768px) {
       #eventList {
-        max-height: 400px;
-        /* Reduce height on mobile */
-        padding: 1rem;
+        display: none;
+        /* max-height: 600px; */
+        overflow-y: auto;
+        /* Ensure smooth scrolling */
+        background-color: white;
+        border-radius: 0.5rem;
+        /* Match rounded corners */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        /* Consistent shadow */
       }
 
       #eventList .event-container {
-        padding: 1rem;
-        gap: 1rem;
+        padding: 1.25rem 2.5rem;
+        /* Consistent padding (20px 40px) */
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        /* Space between events (24px) */
       }
-    }
 
-    /* =============== */
-  </style>
+      #eventList .event-item {
+        width: 100%;
+        /* Ensure full width */
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+      }
+
+      .selected-event {
+        background-color: #f0f4f8;
+        /* Light highlight */
+        border-left-width: 6px;
+        /* Thicker left border */
+        border-left-color: inherit;
+        /* Match the event's border color */
+        padding-left: 1rem;
+        /* Adjust padding to account for border */
+      }
+
+      #eventList th,
+      #eventList td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #eventList th {
+        background-color: #f3f4f6;
+        font-weight: bold;
+      }
+
+      .active-btn {
+        background-color: #facc15 !important;
+      }
+
+      .level-item {
+        cursor: pointer;
+        transition: background-color 0.3s;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 10px;
+      }
+
+      .level-item.active {
+        background-color: #b11116;
+        color: white;
+        font-weight: bold;
+        padding-right: 10px;
+      }
+
+      /* first Level */
+
+      .faculty-content {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      .faculty-header.active {
+        background-color: #b111161a;
+        border: 2px solid red;
+      }
+
+      /* second Level */
+
+      .faculty-content1 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content1.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header1 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* third Level */
+
+      .faculty-content2 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content2.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header2 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* fourth Level */
+
+      .faculty-content3 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content3.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header3 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* fifth Level */
+
+      .faculty-content4 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content4.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header4 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* six Level */
+
+      .faculty-content5 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content5.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header5 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* seven Level */
+
+      .faculty-content6 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content6.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header6 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* eight Level */
+
+      .faculty-content7 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content7.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header7 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* nine Level */
+
+      .faculty-content8 {
+        display: none;
+        padding-left: 14px;
+      }
+
+      .faculty-content8.active {
+        display: block;
+        background-color: #b111161a;
+        color: #2f2f2f;
+        font-weight: normal;
+        border-left: 4px solid #b11116;
+      }
+
+      .faculty-header8 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 10px; */
+        font-weight: medium;
+        font-size: 18px;
+        color: #b11116;
+        /* background-color: #b111161a; */
+      }
+
+      /* Ensure responsiveness */
+      @media (max-width: 768px) {
+        #eventList {
+          max-height: 400px;
+          /* Reduce height on mobile */
+          padding: 1rem;
+        }
+
+        #eventList .event-container {
+          padding: 1rem;
+          gap: 1rem;
+        }
+      }
+
+      /* =============== */
+    </style>
   </head>
 
   <body class="bg-gray-50">
     <!-- Header -->
     <div class="bg-white sticky top-0 z-50 px-2 md:px-8 lg:px-12" dir="rtl">
-      <nav class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10">
+      <nav
+        class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10"
+      >
         <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
           <div class="flex justify-between items-center h-16">
             <!-- Logo and Language -->
@@ -461,22 +459,46 @@
               <a href="index.html">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/2d316bb90db8bdfd99985c7d8b9a3db4557ec01d?width=310"
-                  alt="Future University in Egypt" class="h-12 w-auto" />
+                  alt="Future University in Egypt"
+                  class="h-12 w-auto"
+                />
               </a>
 
               <!-- Language Selector -->
               <div class="relative">
-                <button id="languageBtn"
-                  class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center bg-red-700 hover:bg-red-700 transition-colors">
+                <button
+                  id="languageBtn"
+                  class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center bg-red-700 hover:bg-red-700 transition-colors"
+                >
                   En
-                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  <svg
+                    class="ml-2 h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
                   </svg>
                 </button>
-                <div id="languageDropdown"
-                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Arabic</a>
+                <div
+                  id="languageDropdown"
+                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+                >
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >English</a
+                  >
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >Arabic</a
+                  >
                 </div>
               </div>
             </div>
@@ -485,185 +507,387 @@
             <div class="hidden md:flex items-center space-x-8">
               <!-- Navigation Links -->
               <div class="flex items-center space-x-6">
-                <a href="/" class="text-gray-700 hover:text-university-red font-medium transition-colors ml-8">الرئيسية</a>
+                <a
+                  href="/"
+                  class="text-gray-700 hover:text-university-red font-medium transition-colors ml-8"
+                  >الرئيسية</a
+                >
 
                 <!-- Student Guide Dropdown -->
                 <div class="relative">
-  <button
-    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-    id="studentGuideBtn">
-    دليل الطالب
-    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
-  </button>
-  <div id="studentGuideDropdown"
-    class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 hidden overflow-hidden">
-    <!-- سياسات وإجراءات القبول -->
-    <div class="group">
-      <a href="#"
-        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-        <span>سياسات وإجراءات القبول</span>
-        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      <div class="hidden group-hover:block bg-gray-50 border-t">
-        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
-          <div class="font-medium cursor-pointer">
-            سياسة القبول في الجامعة
-          </div>
-          <div class="cursor-pointer">الإطار العام لسياسات القبول</div>
-          <div class="cursor-pointer">إجراءات التقديم للجامعة</div>
-          <div class="cursor-pointer">حجز اختبارات القبول</div>
-          <div class="cursor-pointer">إجراءات القبول النهائية</div>
-          <div class="cursor-pointer">المستندات المطلوبة العامة</div>
-          <div class="cursor-pointer">القواعد العامة للقبول</div>
-          <div class="cursor-pointer">معايير اختيار المتقدمين</div>
-        </div>
-      </div>
-    </div>
+                  <button
+                    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+                    id="studentGuideBtn"
+                  >
+                    دليل الطالب
+                    <svg
+                      class="ml-1 h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="studentGuideDropdown"
+                    class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 hidden overflow-hidden"
+                  >
+                    <!-- سياسات وإجراءات القبول -->
+                    <div class="group">
+                      <a
+                        href="#"
+                        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      >
+                        <span>سياسات وإجراءات القبول</span>
+                        <svg
+                          class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                      <div class="hidden group-hover:block bg-gray-50 border-t">
+                        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+                          <div class="font-medium cursor-pointer">
+                            سياسة القبول في الجامعة
+                          </div>
+                          <div class="cursor-pointer">
+                            الإطار العام لسياسات القبول
+                          </div>
+                          <div class="cursor-pointer">
+                            إجراءات التقديم للجامعة
+                          </div>
+                          <div class="cursor-pointer">حجز اختبارات القبول</div>
+                          <div class="cursor-pointer">
+                            إجراءات القبول النهائية
+                          </div>
+                          <div class="cursor-pointer">
+                            المستندات المطلوبة العامة
+                          </div>
+                          <div class="cursor-pointer">
+                            القواعد العامة للقبول
+                          </div>
+                          <div class="cursor-pointer">
+                            معايير اختيار المتقدمين
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-    <!-- نظام الدراسة -->
-    <div class="group">
-      <a href="#"
-        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-        <span>نظام الدراسة</span>
-        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      <div class="hidden group-hover:block bg-gray-50 border-t">
-        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
-          <div class="cursor-pointer">نظام الساعات المعتمدة</div>
-          <div class="cursor-pointer">تعريف الساعة المعتمدة</div>
-          <div class="cursor-pointer">الفصول الدراسية</div>
-          <div class="cursor-pointer">سياسة تقييم الطلاب</div>
-          <div class="cursor-pointer">امتحانات الطلاب</div>
-        </div>
-      </div>
-    </div>
+                    <!-- نظام الدراسة -->
+                    <div class="group">
+                      <a
+                        href="#"
+                        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      >
+                        <span>نظام الدراسة</span>
+                        <svg
+                          class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                      <div class="hidden group-hover:block bg-gray-50 border-t">
+                        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+                          <div class="cursor-pointer">
+                            نظام الساعات المعتمدة
+                          </div>
+                          <div class="cursor-pointer">
+                            تعريف الساعة المعتمدة
+                          </div>
+                          <div class="cursor-pointer">الفصول الدراسية</div>
+                          <div class="cursor-pointer">سياسة تقييم الطلاب</div>
+                          <div class="cursor-pointer">امتحانات الطلاب</div>
+                        </div>
+                      </div>
+                    </div>
 
-    <!-- حقوق ومسؤوليات الطلاب -->
-    <div class="group">
-      <a href="#"
-        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-        <span>حقوق ومسؤوليات الطلاب</span>
-        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      <div class="hidden group-hover:block bg-gray-50 border-t">
-        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
-          <div class="cursor-pointer">سلوك الطالب</div>
-          <div class="cursor-pointer">الشكاوى والمظالم</div>
-          <div class="cursor-pointer">حقوق الطالب</div>
-          <div class="cursor-pointer">مسؤوليات الطالب</div>
-        </div>
-      </div>
-    </div>
+                    <!-- حقوق ومسؤوليات الطلاب -->
+                    <div class="group">
+                      <a
+                        href="#"
+                        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      >
+                        <span>حقوق ومسؤوليات الطلاب</span>
+                        <svg
+                          class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                      <div class="hidden group-hover:block bg-gray-50 border-t">
+                        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+                          <div class="cursor-pointer">سلوك الطالب</div>
+                          <div class="cursor-pointer">الشكاوى والمظالم</div>
+                          <div class="cursor-pointer">حقوق الطالب</div>
+                          <div class="cursor-pointer">مسؤوليات الطالب</div>
+                        </div>
+                      </div>
+                    </div>
 
-    <!-- منصات التواصل عبر الإنترنت -->
-    <div class="group">
-      <a href="#"
-        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-        <span>المنصات الإلكترونية</span>
-        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      <div class="hidden group-hover:block bg-gray-50 border-t">
-        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
-          <div class="cursor-pointer">منصة Moodle</div>
-          <div class="cursor-pointer">البوابة الإلكترونية للطلاب</div>
-          <div class="cursor-pointer">البريد الإلكتروني الجامعي</div>
-          <div class="cursor-pointer">Zoom للمحاضرات الافتراضية</div>
-          <div class="cursor-pointer">الدعم الفني</div>
-        </div>
-      </div>
-    </div>
+                    <!-- منصات التواصل عبر الإنترنت -->
+                    <div class="group">
+                      <a
+                        href="#"
+                        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      >
+                        <span>المنصات الإلكترونية</span>
+                        <svg
+                          class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                      <div class="hidden group-hover:block bg-gray-50 border-t">
+                        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+                          <div class="cursor-pointer">منصة Moodle</div>
+                          <div class="cursor-pointer">
+                            البوابة الإلكترونية للطلاب
+                          </div>
+                          <div class="cursor-pointer">
+                            البريد الإلكتروني الجامعي
+                          </div>
+                          <div class="cursor-pointer">
+                            Zoom للمحاضرات الافتراضية
+                          </div>
+                          <div class="cursor-pointer">الدعم الفني</div>
+                        </div>
+                      </div>
+                    </div>
 
-    <!-- دعم الطلاب -->
-    <div class="group">
-      <a href="#"
-        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
-        <span>دعم الطلاب</span>
-        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-      <div class="hidden group-hover:block bg-gray-50 border-t">
-        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
-          <div class="cursor-pointer">موارد الكمبيوتر وتكنولوجيا المعلومات</div>
-          <div class="cursor-pointer">سياسات استخدام الإنترنت</div>
-          <div class="cursor-pointer">خدمات الطلاب</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                    <!-- دعم الطلاب -->
+                    <div class="group">
+                      <a
+                        href="#"
+                        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      >
+                        <span>دعم الطلاب</span>
+                        <svg
+                          class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </a>
+                      <div class="hidden group-hover:block bg-gray-50 border-t">
+                        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+                          <div class="cursor-pointer">
+                            موارد الكمبيوتر وتكنولوجيا المعلومات
+                          </div>
+                          <div class="cursor-pointer">
+                            سياسات استخدام الإنترنت
+                          </div>
+                          <div class="cursor-pointer">خدمات الطلاب</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- Study Plans Dropdown -->
-               <div class="relative">
-  <button
-    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-    id="studyPlansBtn">
-    الخطط الدراسية
-    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
-  </button>
-  <div id="studyPlansDropdown"
-    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية طب الفم والأسنان</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الصيدلة</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الهندسة والتكنولوجيا</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الحاسبات وتكنولوجيا المعلومات</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الاقتصاد والعلوم السياسية</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية التجارة وإدارة الأعمال</a>
-  </div>
-</div>
+                <div class="relative">
+                  <button
+                    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+                    id="studyPlansBtn"
+                  >
+                    الخطط الدراسية
+                    <svg
+                      class="ml-1 h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="studyPlansDropdown"
+                    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+                  >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية طب الفم والأسنان</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية الصيدلة</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية الهندسة والتكنولوجيا</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية الحاسبات وتكنولوجيا المعلومات</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية الاقتصاد والعلوم السياسية</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >كلية التجارة وإدارة الأعمال</a
+                    >
+                  </div>
+                </div>
 
                 <!-- Academic Calendar Dropdown -->
                 <div class="relative">
-  <button
-    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-    id="academicCalendarBtn">
-    التقويم الأكاديمي
-    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
-  </button>
-  <div id="academicCalendarDropdown"
-    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الخريف 2025</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الخريف 2025</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الخريف 2025</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الربيع 2026</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الربيع 2026</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الربيع 2026</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الصيف 2026</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الصيف 2026</a>
-    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الصيف 2026</a>
-  </div>
-</div>
+                  <button
+                    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+                    id="academicCalendarBtn"
+                  >
+                    التقويم الأكاديمي
+                    <svg
+                      class="ml-1 h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </button>
+                  <div
+                    id="academicCalendarDropdown"
+                    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden"
+                  >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >ملخص فصل الخريف 2025</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >أبرز أحداث فصل الخريف 2025</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >تفاصيل فصل الخريف 2025</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >ملخص فصل الربيع 2026</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >أبرز أحداث فصل الربيع 2026</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >تفاصيل فصل الربيع 2026</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >ملخص فصل الصيف 2026</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >أبرز أحداث فصل الصيف 2026</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >تفاصيل فصل الصيف 2026</a
+                    >
+                  </div>
+                </div>
               </div>
             </div>
 
             <!-- Mobile menu button -->
             <div class="md:hidden">
-              <button id="mobileMenuBtn"
-                class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"></path>
-                  <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"></path>
+              <button
+                id="mobileMenuBtn"
+                class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    id="menuIcon"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                  <path
+                    id="closeIcon"
+                    class="hidden"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
                 </svg>
               </button>
             </div>
@@ -671,81 +895,158 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+        <div
+          id="mobileMenu"
+          class="md:hidden hidden bg-white border-t border-gray-200"
+        >
           <div class="px-4 pt-2 pb-3 space-y-1">
-
-            <a href="/"
-              class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">Home</a>
+            <a
+              href="/"
+              class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors"
+              >Home</a
+            >
 
             <!-- Mobile Student Guide -->
             <div>
-              <button id="mobileStudentGuideBtn"
-                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+              <button
+                id="mobileStudentGuideBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors"
+              >
                 Student Guide
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              <div id="mobileStudentGuideDropdown" class="ml-4 mt-2 space-y-1 hidden">
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Admission
-                  Guide</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Course
-                  Registration</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Student
-                  Services</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Campus
-                  Life</a>
+              <div
+                id="mobileStudentGuideDropdown"
+                class="ml-4 mt-2 space-y-1 hidden"
+              >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Admission Guide</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Course Registration</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Student Services</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Campus Life</a
+                >
               </div>
             </div>
 
             <!-- Mobile Study Plans -->
             <div>
-              <button id="mobileStudyPlansBtn"
-                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+              <button
+                id="mobileStudyPlansBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors"
+              >
                 Study Plans
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              <div id="mobileStudyPlansDropdown" class="ml-4 mt-2 space-y-1 hidden">
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Undergraduate</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Graduate</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Doctoral</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Certificate
-                  Programs</a>
+              <div
+                id="mobileStudyPlansDropdown"
+                class="ml-4 mt-2 space-y-1 hidden"
+              >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Undergraduate</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Graduate</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Doctoral</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Certificate Programs</a
+                >
               </div>
             </div>
 
             <!-- Mobile Academic Calendar -->
             <div>
-              <button id="mobileAcademicCalendarBtn"
-                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+              <button
+                id="mobileAcademicCalendarBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors"
+              >
                 Academic Calendar
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <svg
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
                 </svg>
               </button>
-              <div id="mobileAcademicCalendarDropdown" class="ml-4 mt-2 space-y-1 hidden">
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Fall
-                  Semester</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Spring
-                  Semester</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Summer
-                  Session</a>
-                <a href="#"
-                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Important
-                  Dates</a>
+              <div
+                id="mobileAcademicCalendarDropdown"
+                class="ml-4 mt-2 space-y-1 hidden"
+              >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Fall Semester</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Spring Semester</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Summer Session</a
+                >
+                <a
+                  href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md"
+                  >Important Dates</a
+                >
               </div>
             </div>
           </div>
@@ -909,7 +1210,7 @@
                   بدء الحصص الدراسية
                 </div>
               </a>
-              
+
               <a href="#withdrawal1">
                 <div class="level-item" onclick="showLevel('level5', event)">
                   آخر موعد للإضافة والحذف
@@ -1332,8 +1633,11 @@
       </div>
     </div>
 
-    <!-- Footer --> 
-    <footer class="bg-[#A10F14] text-white py-16 px-2 md:px-8 lg:px-12" dir="rtl">
+    <!-- Footer -->
+    <footer
+      class="bg-[#A10F14] text-white py-16 px-2 md:px-8 lg:px-12"
+      dir="rtl"
+    >
       <div class="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-0">
         <div class="grid lg:grid-cols-3 gap-12">
           <!-- Logo and Description -->
@@ -1425,163 +1729,165 @@
     </footer>
 
     <script>
+      // navbar start
 
-        // navbar start
+      // Dropdown functionality
+      function setupDropdown(buttonId, dropdownId) {
+        const button = document.getElementById(buttonId);
+        const dropdown = document.getElementById(dropdownId);
 
+        if (!button || !dropdown) return;
 
-    // Dropdown functionality
-    function setupDropdown(buttonId, dropdownId) {
-      const button = document.getElementById(buttonId);
-      const dropdown = document.getElementById(dropdownId);
-
-      if (!button || !dropdown) return;
-
-      button.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // Close all other dropdowns
-        document.querySelectorAll('[id$="Dropdown"]').forEach(d => {
-          if (d !== dropdown) d.classList.add('hidden');
-        });
-        dropdown.classList.toggle('hidden');
-      });
-    }
-
-    // Setup all dropdowns
-    setupDropdown('languageBtn', 'languageDropdown');
-    setupDropdown('studentGuideBtn', 'studentGuideDropdown');
-    setupDropdown('studyPlansBtn', 'studyPlansDropdown');
-    setupDropdown('academicCalendarBtn', 'academicCalendarDropdown');
-
-    // Mobile dropdowns
-    setupDropdown('mobileLanguageBtn', 'mobileLanguageDropdown');
-    setupDropdown('mobileStudentGuideBtn', 'mobileStudentGuideDropdown');
-    setupDropdown('mobileStudyPlansBtn', 'mobileStudyPlansDropdown');
-    setupDropdown('mobileAcademicCalendarBtn', 'mobileAcademicCalendarDropdown');
-
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuIcon = document.getElementById('menuIcon');
-    const closeIcon = document.getElementById('closeIcon');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    });
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('[id$="Dropdown"]').forEach(dropdown => {
-        dropdown.classList.add('hidden');
-      });
-    });
-
-    // Close mobile menu when window is resized to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 768) {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-      }
-    });
-
-    // Prevent dropdown close when clicking inside dropdown
-    document.querySelectorAll('[id$="Dropdown"]').forEach(dropdown => {
-      dropdown.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
-    });
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-      // Handle sidebar navigation
-      const navHeaders = document.querySelectorAll('.nav-header');
-      const navSubitems = document.querySelectorAll('.nav-subitem');
-
-      // Toggle sidebar sections
-      navHeaders.forEach(header => {
-        header.addEventListener('click', function () {
-          const navItem = this.parentElement;
-          const arrow = this.querySelector('.arrow');
-          const submenu = navItem.querySelector('.nav-submenu');
-
-          if (submenu) {
-            const isActive = navItem.classList.contains('active');
-
-            // Close all other sections
-            document.querySelectorAll('.nav-item').forEach(item => {
-              if (item !== navItem) {
-                item.classList.remove('active');
-                const otherArrow = item.querySelector('.arrow');
-                if (otherArrow) {
-                  otherArrow.textContent = '▶';
-                }
-              }
-            });
-
-            // Toggle current section
-            if (isActive) {
-              navItem.classList.remove('active');
-              arrow.textContent = '▶';
-            } else {
-              navItem.classList.add('active');
-              arrow.textContent = '▼';
-            }
-          }
-        });
-      });
-
-      // Handle submenu item selection
-      navSubitems.forEach(subitem => {
-        subitem.addEventListener('click', function (e) {
+        button.addEventListener("click", (e) => {
           e.stopPropagation();
-
-          // Remove active class from all subitems
-          navSubitems.forEach(item => {
-            item.classList.remove('active');
+          // Close all other dropdowns
+          document.querySelectorAll('[id$="Dropdown"]').forEach((d) => {
+            if (d !== dropdown) d.classList.add("hidden");
           });
+          dropdown.classList.toggle("hidden");
+        });
+      }
 
-          // Add active class to clicked item
-          this.classList.add('active');
+      // Setup all dropdowns
+      setupDropdown("languageBtn", "languageDropdown");
+      setupDropdown("studentGuideBtn", "studentGuideDropdown");
+      setupDropdown("studyPlansBtn", "studyPlansDropdown");
+      setupDropdown("academicCalendarBtn", "academicCalendarDropdown");
 
-          // Here you could add functionality to show/hide different semester content
-          // For now, all content is visible as shown in the image
-          console.log('Selected:', this.textContent);
+      // Mobile dropdowns
+      setupDropdown("mobileLanguageBtn", "mobileLanguageDropdown");
+      setupDropdown("mobileStudentGuideBtn", "mobileStudentGuideDropdown");
+      setupDropdown("mobileStudyPlansBtn", "mobileStudyPlansDropdown");
+      setupDropdown(
+        "mobileAcademicCalendarBtn",
+        "mobileAcademicCalendarDropdown"
+      );
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.getElementById("menuIcon");
+      const closeIcon = document.getElementById("closeIcon");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener("click", () => {
+        document.querySelectorAll('[id$="Dropdown"]').forEach((dropdown) => {
+          dropdown.classList.add("hidden");
         });
       });
 
-      // Add smooth scrolling for better UX
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+      // Close mobile menu when window is resized to desktop
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileMenu.classList.add("hidden");
+          menuIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      });
+
+      // Prevent dropdown close when clicking inside dropdown
+      document.querySelectorAll('[id$="Dropdown"]').forEach((dropdown) => {
+        dropdown.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Handle sidebar navigation
+        const navHeaders = document.querySelectorAll(".nav-header");
+        const navSubitems = document.querySelectorAll(".nav-subitem");
+
+        // Toggle sidebar sections
+        navHeaders.forEach((header) => {
+          header.addEventListener("click", function () {
+            const navItem = this.parentElement;
+            const arrow = this.querySelector(".arrow");
+            const submenu = navItem.querySelector(".nav-submenu");
+
+            if (submenu) {
+              const isActive = navItem.classList.contains("active");
+
+              // Close all other sections
+              document.querySelectorAll(".nav-item").forEach((item) => {
+                if (item !== navItem) {
+                  item.classList.remove("active");
+                  const otherArrow = item.querySelector(".arrow");
+                  if (otherArrow) {
+                    otherArrow.textContent = "▶";
+                  }
+                }
+              });
+
+              // Toggle current section
+              if (isActive) {
+                navItem.classList.remove("active");
+                arrow.textContent = "▶";
+              } else {
+                navItem.classList.add("active");
+                arrow.textContent = "▼";
+              }
+            }
+          });
+        });
+
+        // Handle submenu item selection
+        navSubitems.forEach((subitem) => {
+          subitem.addEventListener("click", function (e) {
+            e.stopPropagation();
+
+            // Remove active class from all subitems
+            navSubitems.forEach((item) => {
+              item.classList.remove("active");
             });
-          }
+
+            // Add active class to clicked item
+            this.classList.add("active");
+
+            // Here you could add functionality to show/hide different semester content
+            // For now, all content is visible as shown in the image
+            console.log("Selected:", this.textContent);
+          });
         });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Add table row hover effects
+        const tableRows = document.querySelectorAll(
+          ".curriculum-table tbody tr:not(.total-row)"
+        );
+        tableRows.forEach((row) => {
+          // row.addEventListener('mouseenter', function() {
+          //     this.style.backgroundColor = '#f0f8ff';
+          // });
+
+          row.addEventListener("mouseleave", function () {
+            this.style.backgroundColor = "";
+          });
+        });
+
+        // Initialize the page
+        console.log("Dental Curriculum System loaded successfully");
       });
 
-      // Add table row hover effects
-      const tableRows = document.querySelectorAll('.curriculum-table tbody tr:not(.total-row)');
-      tableRows.forEach(row => {
-        // row.addEventListener('mouseenter', function() {
-        //     this.style.backgroundColor = '#f0f8ff';
-        // });
-
-        row.addEventListener('mouseleave', function () {
-          this.style.backgroundColor = '';
-        });
-      });
-
-      // Initialize the page
-      console.log('Dental Curriculum System loaded successfully');
-    });
-
-    // navbar end 
+      // navbar end
       // Content data for each sidebar item
       const contentData = {
         level1: {
@@ -3498,7 +3804,6 @@
   `,
         },
 
-
         level13: {
           title: "تفاصيل فصل ربيع 2026: آخر موعد للسحب",
           events: [
@@ -3656,7 +3961,6 @@
   `,
         },
 
-        
         level4: {
           title: "ملخص فصل صيف 2026: امتحانات منتصف الفصل",
           events: [
@@ -3691,7 +3995,6 @@
     </div>
   `,
         },
-
 
         level6: {
           title: "ملخص فصل صيف 2026: الإجازات",
@@ -4207,246 +4510,238 @@
 
       let openSection = null;
 
-    function toggleFaculty(facultyId) {
-      const content = document.getElementById(`${facultyId}-content`);
-      const header = content.previousElementSibling;
-      const icon = header.querySelector('.toggle-icon');
+      function toggleFaculty(facultyId) {
+        const content = document.getElementById(`${facultyId}-content`);
+        const header = content.previousElementSibling;
+        const icon = header.querySelector(".toggle-icon");
 
-      // If this section is already open, close it
-      if (content.classList.contains('active')) {
-        content.classList.remove('active');
-        icon.textContent = '▼';
-        openSection = null;
-        return;
+        // If this section is already open, close it
+        if (content.classList.contains("active")) {
+          content.classList.remove("active");
+          icon.textContent = "▼";
+          openSection = null;
+          return;
+        }
+
+        // Close the currently open section (if any)
+        if (openSection) {
+          const openHeader = openSection.previousElementSibling;
+          const openIcon = openHeader.querySelector(".toggle-icon");
+          openSection.classList.remove("active");
+          openIcon.textContent = "▼";
+        }
+
+        // Open the clicked section
+        content.classList.add("active");
+        icon.textContent = "▲";
+        openSection = content;
       }
 
-      // Close the currently open section (if any)
-      if (openSection) {
-        const openHeader = openSection.previousElementSibling;
-        const openIcon = openHeader.querySelector('.toggle-icon');
-        openSection.classList.remove('active');
-        openIcon.textContent = '▼';
-      }
+      // new code end
 
-      // Open the clicked section
-      content.classList.add('active');
-      icon.textContent = '▲';
-      openSection = content;
-    }
+      // Track the currently selected level and calendar instance
+      let currentLevel = "level1";
+      let currentDataSet = contentData; // Default to contentData
+      let calendarInstance = null;
+      function getCurrentDataSet() {
+        const dentalContent = document.getElementById("dental-content");
+        const dental1Content = document.getElementById("dental1-content");
+        const dental2Content = document.getElementById("dental2-content");
+        const dental3Content = document.getElementById("dental3-content");
+        const dental4Content = document.getElementById("dental4-content");
+        const dental5Content = document.getElementById("dental5-content");
+        const dental6Content = document.getElementById("dental6-content");
+        const dental7Content = document.getElementById("dental7-content");
+        const dental8Content = document.getElementById("dental8-content");
 
-
-    // new code end 
-
-
-    // Track the currently selected level and calendar instance
-    let currentLevel = "level1";
-    let currentDataSet = contentData; // Default to contentData
-    let calendarInstance = null;
-    function getCurrentDataSet() {
-      const dentalContent = document.getElementById("dental-content");
-      const dental1Content = document.getElementById("dental1-content");
-      const dental2Content = document.getElementById("dental2-content");
-      const dental3Content = document.getElementById("dental3-content");
-      const dental4Content = document.getElementById("dental4-content");
-      const dental5Content = document.getElementById("dental5-content");
-      const dental6Content = document.getElementById("dental6-content");
-      const dental7Content = document.getElementById("dental7-content");
-      const dental8Content = document.getElementById("dental8-content");
-
-      if (dental1Content.classList.contains("active")) {
-        return contentData1;
-      } else if (dental2Content.classList.contains("active")) {
-        return contentData2;
-      } else if (dental3Content.classList.contains("active")) {
-        return contentData3;
-      } else if (dental4Content.classList.contains("active")) {
-        return contentData4;
-      } else if (dental5Content.classList.contains("active")) {
-        return contentData5;
-      } else if (dental6Content.classList.contains("active")) {
-        return contentData6;
-      } else if (dental7Content.classList.contains("active")) {
-        return contentData7;
-      } else if (dental8Content.classList.contains("active")) {
-        return contentData8;
-      } else {
-        return contentData;
-      }
-    }
-
-
-
-
-    // Function to generate all events for list view with selected event at top
-    function generateAllEventsList(selectedLevel, dataSet) {
-      let allEventsHtml = '<div class="event-container">';
-      if (dataSet[selectedLevel]) {
-        allEventsHtml += `<div id="${selectedLevel}-highlight" class="selected-event">${dataSet[selectedLevel].details}</div>`;
-      }
-      for (const level in dataSet) {
-        if (level !== selectedLevel) {
-          allEventsHtml += dataSet[level].details;
+        if (dental1Content.classList.contains("active")) {
+          return contentData1;
+        } else if (dental2Content.classList.contains("active")) {
+          return contentData2;
+        } else if (dental3Content.classList.contains("active")) {
+          return contentData3;
+        } else if (dental4Content.classList.contains("active")) {
+          return contentData4;
+        } else if (dental5Content.classList.contains("active")) {
+          return contentData5;
+        } else if (dental6Content.classList.contains("active")) {
+          return contentData6;
+        } else if (dental7Content.classList.contains("active")) {
+          return contentData7;
+        } else if (dental8Content.classList.contains("active")) {
+          return contentData8;
+        } else {
+          return contentData;
         }
       }
-      allEventsHtml += "</div>";
-      return allEventsHtml;
-    }
 
-    // Function to initialize or update the calendar
-    function initCalendar(level, dataSet) {
-      const calendarEl = document.getElementById("calendar");
-      // Remove existing calendar content
-      while (calendarEl.firstChild) {
-        calendarEl.removeChild(calendarEl.firstChild);
-      }
-
-      // Destroy existing calendar instance if it exists
-      if (calendarInstance) {
-        calendarInstance.destroy();
-        calendarInstance = null;
-      }
-
-      // Recreate the calendar container
-      calendarEl.style.display = "block";
-      calendarEl.classList.add(
-        "bg-white",
-        "rounded-b-lg",
-        "shadow-sm",
-        "p-4"
-      );
-
-      // Create new calendar instance
-      calendarInstance = new FullCalendar.Calendar(calendarEl, {
-        initialView: "dayGridMonth",
-        initialDate: dataSet[level]?.events[0]?.date || "2025-09-01",
-        headerToolbar: {
-          left: "",
-          center: "title",
-          right: "prev,next",
-        },
-        events: dataSet[level]?.events || [],
-        dayCellContent: function (arg) {
-          return { html: arg.dayNumberText };
-        },
-        dayCellDidMount: function (info) {
-          const dayEvents = info.el.querySelector(".fc-daygrid-day-events");
-          if (dayEvents) {
-            dayEvents.style.marginTop = "2rem";
-            dayEvents.style.display = "flex";
-            dayEvents.style.flexDirection = "column-reverse";
+      // Function to generate all events for list view with selected event at top
+      function generateAllEventsList(selectedLevel, dataSet) {
+        let allEventsHtml = '<div class="event-container">';
+        if (dataSet[selectedLevel]) {
+          allEventsHtml += `<div id="${selectedLevel}-highlight" class="selected-event">${dataSet[selectedLevel].details}</div>`;
+        }
+        for (const level in dataSet) {
+          if (level !== selectedLevel) {
+            allEventsHtml += dataSet[level].details;
           }
-        },
-        height: "auto",
-      });
-      calendarInstance.render();
+        }
+        allEventsHtml += "</div>";
+        return allEventsHtml;
+      }
 
-      // Force a window resize event to ensure proper rendering
-      setTimeout(() => {
-        window.dispatchEvent(new Event("resize"));
-      }, 100);
-    }
+      // Function to initialize or update the calendar
+      function initCalendar(level, dataSet) {
+        const calendarEl = document.getElementById("calendar");
+        // Remove existing calendar content
+        while (calendarEl.firstChild) {
+          calendarEl.removeChild(calendarEl.firstChild);
+        }
 
-    // Function to update main content and calendar
-    function showLevel(level, event) {
-      if (event) event.preventDefault();
-
-      // Update current level
-      currentLevel = level;
-
-      // Determine the current dataset
-      currentDataSet = getCurrentDataSet();
-
-      // Remove active class from all sidebar items
-      document.querySelectorAll(".level-item").forEach((item) => {
-        item.classList.remove("active");
-      });
-
-      // Add active class to the clicked item
-      event.currentTarget.classList.add("active");
-
-      // Get main content elements
-      const mainTitle = document.querySelector("main h1");
-      const calendarDiv = document.getElementById("calendar");
-      const eventListDiv = document.getElementById("eventList");
-
-      // Update main title and content
-      if (currentDataSet[level]) {
-        mainTitle.textContent = currentDataSet[level].title;
-        eventListDiv.innerHTML = `<div class="event-container">${currentDataSet[level].details}</div>`;
-        initCalendar(level, currentDataSet);
-        calendarDiv.style.display = "block";
-        eventListDiv.style.display = "none";
-        document.getElementById("dayBtn").classList.add("active-btn");
-        document.getElementById("listBtn").classList.remove("active-btn");
-      } else {
-        mainTitle.textContent = "No Content Available";
-        eventListDiv.innerHTML =
-          '<div class="event-container"><p>No details available for this selection.</p></div>';
-        calendarDiv.style.display = "none";
+        // Destroy existing calendar instance if it exists
         if (calendarInstance) {
           calendarInstance.destroy();
           calendarInstance = null;
         }
+
+        // Recreate the calendar container
+        calendarEl.style.display = "block";
+        calendarEl.classList.add(
+          "bg-white",
+          "rounded-b-lg",
+          "shadow-sm",
+          "p-4"
+        );
+
+        // Create new calendar instance
+        calendarInstance = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          initialDate: dataSet[level]?.events[0]?.date || "2025-09-01",
+          headerToolbar: {
+            left: "",
+            center: "title",
+            right: "prev,next",
+          },
+          events: dataSet[level]?.events || [],
+          dayCellContent: function (arg) {
+            return { html: arg.dayNumberText };
+          },
+          dayCellDidMount: function (info) {
+            const dayEvents = info.el.querySelector(".fc-daygrid-day-events");
+            if (dayEvents) {
+              dayEvents.style.marginTop = "2rem";
+              dayEvents.style.display = "flex";
+              dayEvents.style.flexDirection = "column-reverse";
+            }
+          },
+          height: "auto",
+        });
+        calendarInstance.render();
+
+        // Force a window resize event to ensure proper rendering
+        setTimeout(() => {
+          window.dispatchEvent(new Event("resize"));
+        }, 100);
       }
-    }
 
-    // DOM Content Loaded event listener
-    document.addEventListener("DOMContentLoaded", function () {
-      const dayBtn = document.getElementById("dayBtn");
-      const listBtn = document.getElementById("listBtn");
-      const calendarDiv = document.getElementById("calendar");
-      const eventListDiv = document.getElementById("eventList");
+      // Function to update main content and calendar
+      function showLevel(level, event) {
+        if (event) event.preventDefault();
 
-      // Initialize calendar with default events (Registration from contentData)
-      currentDataSet = contentData;
-      initCalendar("level1", currentDataSet);
+        // Update current level
+        currentLevel = level;
 
-      // Set initial state
-      calendarDiv.style.display = "block";
-      eventListDiv.style.display = "none";
-      eventListDiv.innerHTML = generateAllEventsList(
-        currentLevel,
-        currentDataSet
-      );
-      document.getElementById("dayBtn").classList.add("active-btn");
-      document.getElementById("listBtn").classList.remove("active-btn");
+        // Determine the current dataset
+        currentDataSet = getCurrentDataSet();
 
-      // Toggle between calendar and list view
-      dayBtn.addEventListener("click", function () {
+        // Remove active class from all sidebar items
+        document.querySelectorAll(".level-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Add active class to the clicked item
+        event.currentTarget.classList.add("active");
+
+        // Get main content elements
+        const mainTitle = document.querySelector("main h1");
+        const calendarDiv = document.getElementById("calendar");
+        const eventListDiv = document.getElementById("eventList");
+
+        // Update main title and content
+        if (currentDataSet[level]) {
+          mainTitle.textContent = currentDataSet[level].title;
+          eventListDiv.innerHTML = `<div class="event-container">${currentDataSet[level].details}</div>`;
+          initCalendar(level, currentDataSet);
+          calendarDiv.style.display = "block";
+          eventListDiv.style.display = "none";
+          document.getElementById("dayBtn").classList.add("active-btn");
+          document.getElementById("listBtn").classList.remove("active-btn");
+        } else {
+          mainTitle.textContent = "No Content Available";
+          eventListDiv.innerHTML =
+            '<div class="event-container"><p>No details available for this selection.</p></div>';
+          calendarDiv.style.display = "none";
+          if (calendarInstance) {
+            calendarInstance.destroy();
+            calendarInstance = null;
+          }
+        }
+      }
+
+      // DOM Content Loaded event listener
+      document.addEventListener("DOMContentLoaded", function () {
+        const dayBtn = document.getElementById("dayBtn");
+        const listBtn = document.getElementById("listBtn");
+        const calendarDiv = document.getElementById("calendar");
+        const eventListDiv = document.getElementById("eventList");
+
+        // Initialize calendar with default events (Registration from contentData)
+        currentDataSet = contentData;
+        initCalendar("level1", currentDataSet);
+
+        // Set initial state
         calendarDiv.style.display = "block";
         eventListDiv.style.display = "none";
-        dayBtn.classList.add("active-btn");
-        listBtn.classList.remove("active-btn");
-        initCalendar(currentLevel, currentDataSet);
-      });
-
-      listBtn.addEventListener("click", function () {
-        calendarDiv.style.display = "none";
-        eventListDiv.style.display = "block";
         eventListDiv.innerHTML = generateAllEventsList(
           currentLevel,
           currentDataSet
         );
-        const selectedEvent = document.getElementById(
-          `${currentLevel}-highlight`
-        );
-        if (selectedEvent) {
-          selectedEvent.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-        listBtn.classList.add("active-btn");
-        dayBtn.classList.remove("active-btn");
-      });
-    });
+        document.getElementById("dayBtn").classList.add("active-btn");
+        document.getElementById("listBtn").classList.remove("active-btn");
 
-    
+        // Toggle between calendar and list view
+        dayBtn.addEventListener("click", function () {
+          calendarDiv.style.display = "block";
+          eventListDiv.style.display = "none";
+          dayBtn.classList.add("active-btn");
+          listBtn.classList.remove("active-btn");
+          initCalendar(currentLevel, currentDataSet);
+        });
+
+        listBtn.addEventListener("click", function () {
+          calendarDiv.style.display = "none";
+          eventListDiv.style.display = "block";
+          eventListDiv.innerHTML = generateAllEventsList(
+            currentLevel,
+            currentDataSet
+          );
+          const selectedEvent = document.getElementById(
+            `${currentLevel}-highlight`
+          );
+          if (selectedEvent) {
+            selectedEvent.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+          listBtn.classList.add("active-btn");
+          dayBtn.classList.remove("active-btn");
+        });
+      });
     </script>
 
     <script>
-  lucide.createIcons();
-</script>
-   
+      lucide.createIcons();
+    </script>
   </body>
 </html>
