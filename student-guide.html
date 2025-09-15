@@ -7,6 +7,7 @@
   <title>Responsive Sidebar Layout</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+      <link rel="stylesheet" href="./style.css" />
 
   <script>
     tailwind.config = {
@@ -25,213 +26,306 @@
 
 <body class="bg-gray-50 font-sans">
   <!-- Header -->
-  <header class="bg-white sticky top-0 z-50">
-    <nav class="max-w-[1560px] bg-red-white mx-auto shadow-sm border-b border-gray-200 border-black/10" dir="rtl">
-      <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
-        <div class="flex justify-between items-center h-16">
-          <!-- Logo and Language -->
-          <div class="flex items-center gap-10">
-            <a href="index.html">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/2d316bb90db8bdfd99985c7d8b9a3db4557ec01d?width=310"
-                alt="الجامعة المستقبلية في مصر" class="h-12 w-auto" />
-            </a>
+ <div class="bg-white sticky top-0 z-50 px-2 md:px-8 lg:px-12" dir="rtl">
+      <nav class="max-w-[1560px] mx-auto shadow-sm border-b border-gray-200 border-black/10">
+        <div class="max-full mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="flex justify-between items-center h-16">
+            <!-- Logo and Language -->
+            <div class="flex items-center gap-10">
+              <a href="index.html">
+                <img
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/2d316bb90db8bdfd99985c7d8b9a3db4557ec01d?width=310"
+                  alt="Future University in Egypt" class="h-12 w-auto" />
+              </a>
 
-            <!-- Language Selector -->
-            <div class="relative">
-              <button id="languageBtn"
-                class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center hover:bg-red-700 transition-colors">
-                اللغة: الإنجليزية
-                <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- Language Selector -->
+              <div class="relative">
+                <button id="languageBtn"
+                  class="bg-university-red text-white px-2 lg:px-4 py-2 rounded text-sm font-medium flex items-center bg-red-700 hover:bg-red-700 transition-colors">
+                  En
+                  <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <div id="languageDropdown"
+                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">English</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Arabic</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8">
+              <!-- Navigation Links -->
+              <div class="flex items-center space-x-6">
+                <a href="/" class="text-gray-700 hover:text-university-red font-medium transition-colors ml-8">الرئيسية</a>
+
+                <!-- Student Guide Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studentGuideBtn">
+    دليل الطالب
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studentGuideDropdown"
+    class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 z-50 hidden overflow-hidden">
+    <!-- سياسات وإجراءات القبول -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>سياسات وإجراءات القبول</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="font-medium cursor-pointer">
+            سياسة القبول في الجامعة
+          </div>
+          <div class="cursor-pointer">الإطار العام لسياسات القبول</div>
+          <div class="cursor-pointer">إجراءات التقديم للجامعة</div>
+          <div class="cursor-pointer">حجز اختبارات القبول</div>
+          <div class="cursor-pointer">إجراءات القبول النهائية</div>
+          <div class="cursor-pointer">المستندات المطلوبة العامة</div>
+          <div class="cursor-pointer">القواعد العامة للقبول</div>
+          <div class="cursor-pointer">معايير اختيار المتقدمين</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نظام الدراسة -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>نظام الدراسة</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="cursor-pointer">نظام الساعات المعتمدة</div>
+          <div class="cursor-pointer">تعريف الساعة المعتمدة</div>
+          <div class="cursor-pointer">الفصول الدراسية</div>
+          <div class="cursor-pointer">سياسة تقييم الطلاب</div>
+          <div class="cursor-pointer">امتحانات الطلاب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- حقوق ومسؤوليات الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>حقوق ومسؤوليات الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="cursor-pointer">سلوك الطالب</div>
+          <div class="cursor-pointer">الشكاوى والمظالم</div>
+          <div class="cursor-pointer">حقوق الطالب</div>
+          <div class="cursor-pointer">مسؤوليات الطالب</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- منصات التواصل عبر الإنترنت -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>المنصات الإلكترونية</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="cursor-pointer">منصة Moodle</div>
+          <div class="cursor-pointer">البوابة الإلكترونية للطلاب</div>
+          <div class="cursor-pointer">البريد الإلكتروني الجامعي</div>
+          <div class="cursor-pointer">Zoom للمحاضرات الافتراضية</div>
+          <div class="cursor-pointer">الدعم الفني</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- دعم الطلاب -->
+    <div class="group">
+      <a href="#"
+        class="flex justify-between items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+        <span>دعم الطلاب</span>
+        <svg class="h-4 w-4 text-gray-400 group-hover:rotate-90 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <div class="hidden group-hover:block bg-gray-50 border-t">
+        <div class="px-4 py-2 text-xs text-gray-600 space-y-3">
+          <div class="cursor-pointer">موارد الكمبيوتر وتكنولوجيا المعلومات</div>
+          <div class="cursor-pointer">سياسات استخدام الإنترنت</div>
+          <div class="cursor-pointer">خدمات الطلاب</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- Study Plans Dropdown -->
+               <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="studyPlansBtn">
+    الخطط الدراسية
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="studyPlansDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية طب الفم والأسنان</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الصيدلة</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الهندسة والتكنولوجيا</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الحاسبات وتكنولوجيا المعلومات</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية الاقتصاد والعلوم السياسية</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">كلية التجارة وإدارة الأعمال</a>
+  </div>
+</div>
+
+                <!-- Academic Calendar Dropdown -->
+                <div class="relative">
+  <button
+    class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
+    id="academicCalendarBtn">
+    التقويم الأكاديمي
+    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div id="academicCalendarDropdown"
+    class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الخريف 2025</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الربيع 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">ملخص فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">أبرز أحداث فصل الصيف 2026</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تفاصيل فصل الصيف 2026</a>
+  </div>
+</div>
+              </div>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+              <button id="mobileMenuBtn"
+                class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+                  <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200">
+          <div class="px-4 pt-2 pb-3 space-y-1">
+
+            <a href="/"
+              class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">Home</a>
+
+            <!-- Mobile Student Guide -->
+            <div>
+              <button id="mobileStudentGuideBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Student Guide
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              <div id="languageDropdown"
-                class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الإنجليزية</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">العربية</a>
+              <div id="mobileStudentGuideDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Admission
+                  Guide</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Course
+                  Registration</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Student
+                  Services</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Campus
+                  Life</a>
               </div>
             </div>
-          </div>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center space-x-8">
-            <!-- Navigation Links -->
-            <div class="flex items-center space-x-6">
-              <a href="#" class="text-gray-700 hover:text-university-red font-medium transition-colors">الرئيسية</a>
-
-              <!-- Student Guide Dropdown -->
-              <div class="relative">
-                <button class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-                  id="studentGuideBtn">
-                  دليل الطالب
-                  <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <div id="studentGuideDropdown"
-                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">دليل القبول</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">تسجيل المقررات</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">خدمات الطلاب</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الحياة داخل الحرم
-                    الجامعي</a>
-                </div>
-              </div>
-
-              <!-- Study Plans Dropdown -->
-              <div class="relative">
-                <button class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-                  id="studyPlansBtn">
-                  الخطط الدراسية
-                  <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <div id="studyPlansDropdown"
-                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">المرحلة الجامعية</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الدراسات العليا</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الدراسات الدكتوراه</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">برامج الشهادات</a>
-                </div>
-              </div>
-
-              <!-- Academic Calendar Dropdown -->
-              <div class="relative">
-                <button class="text-gray-700 hover:text-university-red font-medium flex items-center transition-colors"
-                  id="academicCalendarBtn">
-                  التقويم الأكاديمي
-                  <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-                <div id="academicCalendarDropdown"
-                  class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الفصل الدراسي الأول</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الفصل الدراسي الثاني</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">الفصل الصيفي</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">مواعيد هامة</a>
-                </div>
+            <!-- Mobile Study Plans -->
+            <div>
+              <button id="mobileStudyPlansBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Study Plans
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileStudyPlansDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Undergraduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Graduate</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Doctoral</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Certificate
+                  Programs</a>
               </div>
             </div>
-          </div>
 
-          <!-- Mobile menu button -->
-          <div class="md:hidden">
-            <button id="mobileMenuBtn"
-              class="text-gray-700 hover:text-university-red focus:outline-none focus:text-university-red transition-colors">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"></path>
-                <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Navigation Menu -->
-      <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200" dir="rtl">
-        <div class="px-4 pt-2 pb-3 space-y-1">
-          <!-- Language Selector Mobile -->
-          <div class="mb-4">
-            <button id="mobileLanguageBtn"
-              class="w-full bg-university-red text-white px-4 py-2 rounded text-sm font-medium flex items-center justify-between hover:bg-red-700 transition-colors">
-              اللغة: الإنجليزية
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div id="mobileLanguageDropdown" class="mt-2 bg-gray-50 rounded-md hidden">
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">الإنجليزية</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">العربية</a>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">الفرنسية</a>
-            </div>
-          </div>
-
-          <a href="#"
-            class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">الرئيسية</a>
-
-          <!-- Mobile Student Guide -->
-          <div>
-            <button id="mobileStudentGuideBtn"
-              class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
-              دليل الطالب
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div id="mobileStudentGuideDropdown" class="mr-4 mt-2 space-y-1 hidden">
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">دليل
-                القبول</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">تسجيل
-                المقررات</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">خدمات
-                الطلاب</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الحياة
-                داخل الحرم الجامعي</a>
-            </div>
-          </div>
-
-          <!-- Mobile Study Plans -->
-          <div>
-            <button id="mobileStudyPlansBtn"
-              class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
-              الخطط الدراسية
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div id="mobileStudyPlansDropdown" class="mr-4 mt-2 space-y-1 hidden">
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">المرحلة
-                الجامعية</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الدراسات
-                العليا</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الدراسات
-                الدكتوراه</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">برامج
-                الشهادات</a>
-            </div>
-          </div>
-
-          <!-- Mobile Academic Calendar -->
-          <div>
-            <button id="mobileAcademicCalendarBtn"
-              class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
-              التقويم الأكاديمي
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div id="mobileAcademicCalendarDropdown" class="mr-4 mt-2 space-y-1 hidden">
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الفصل
-                الدراسي الأول</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الفصل
-                الدراسي الثاني</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">الفصل
-                الصيفي</a>
-              <a href="#"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">مواعيد
-                هامة</a>
+            <!-- Mobile Academic Calendar -->
+            <div>
+              <button id="mobileAcademicCalendarBtn"
+                class="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-university-red hover:bg-gray-50 rounded-md transition-colors">
+                Academic Calendar
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              <div id="mobileAcademicCalendarDropdown" class="ml-4 mt-2 space-y-1 hidden">
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Fall
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Spring
+                  Semester</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Summer
+                  Session</a>
+                <a href="#"
+                  class="block px-3 py-2 text-sm text-gray-600 hover:text-university-red hover:bg-gray-50 rounded-md">Important
+                  Dates</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </div>
 
   <!-- Hero Section -->
   <section class="relative h-64 md:h-[500px] lg:h-[568px] bg-cover bg-center px-2 md:px-8 lg:px-12"
